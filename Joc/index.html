@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>L.P. Adventure</title>
+		<link rel="icon" type="image/png" href="img/capcalera.png">
+
+		<!----------BIBLIOGRAFIA---------->
+			<!--Ornaments: 
+				https://www.pngfuel.com/free-png/rswxp-->
+			<!--Font-family: 
+				https://www.onlinewebfonts.com/download/e44df502907461539c98df084a0fda77-->
+			<!--Personatge: 
+				https://dlpng.com/png/1131513-->
+		<!-------------------------------->
+
+		<!----------CSS---------->
+			<link rel="stylesheet" href="css/main.css" type="text/css">
+			
+		<!----------FONT-FAMILY---------->	
+			<link href="//db.onlinewebfonts.com/c/e44df502907461539c98df084a0fda77?family=AdvoCut" rel="stylesheet" type="text/css"/>
+
+		<!----------JS---------->
+
+	</head>
+	<body>
+
+		<script>
+			function mostra(articleATapar, articleAMostrar) {
+
+			  var antic = document.getElementById(articleATapar);
+			  var nou = document.getElementById(articleAMostrar);
+			  
+			  if (nou.style.display == 'none') {
+
+				nou.style.display = 'block';
+				antic.style.display = 'none';
+			  }
+			  else {
+
+				nou.style.display = 'none';
+				antic.style.display = 'block';
+			  }
+			}
+			
+		</script>
+
+		<header>
+			La Pineda Adventure
+		</header>
+		
+		<div class="container">
+
+			<article id="menuPrincipal">
+				<h1>
+					<img src="img/ornament-esquerra.png" class="ornament" alt="ornament-esquerra">
+					INICI
+					<img src="img/ornament-dreta.png" class="ornament" alt="ornament-dreta">
+			   </h1>
+
+			   <button class="partida" onclick="mostra('menuPrincipal', 'crearPartida')">Nova Partida</button> 
+			   <button class="partida" onclick="mostra('menuPrincipal', 'obrirPartida')">Partides Guardada</button> 
+		   </article>
+
+			<article id="crearPartida">
+  	           <h1>
+  	                <img src="img/ornament-esquerra.png" class="ornament" alt="ornament-esquerra">
+  	            	NOVA PARTIDA
+  	               	<img src="img/ornament-dreta.png" class="ornament" alt="ornament-dreta">
+            	</h1>
+
+            	<img src="img/personatge.png" class="personatge" alt="personatge">
+
+            	<form action="#" method="GET" id="formulariNomPersonatge">
+                	<input type="text" id="nomPersonatge" name="nomPersonatge" placeholder="Nom del personatge" minlength="1" maxlength="15">
+                </form>
+
+                <button type="submit" form="formulariNomPersonatge" onclick="mostra('crearPartida', 'informacioPartida')" class="butoNomPersonatge">CONTINUAR</button>
+				
+				<button class="enrera" onclick="mostra('menuPrincipal', 'crearPartida')">&#8630 Enrera</button>
+			</article>
+
+			<article id="informacioPartida">
+				<h1>
+					<img src="img/ornament-esquerra.png" class="ornament" alt="ornament-esquerra">
+					BENVINGUT AL JOC
+					<img src="img/ornament-dreta.png" class="ornament" alt="ornament-dreta">
+			   </h1>
+
+			   <div class="informacioPartida">
+				   El joc comença a l'aula de DAW de segon curs. 
+				   Allà, un professor us deixarà 5 minuts per anar al lavabo. 
+				   Durant aquella estona heu de trobar 5 professors hi resoldre les preguntes que us fassin.
+				   <hr>
+					Per a cada professor que guanyeu, obtindreu una clau. 
+					Un cop obtingudes totes les claus, obriu el cofre que està en la vostre aula per a obtenir el tresor.
+					<hr>
+				   Però vigileu! Si passen els 5 minuts i no heu obtingut les 5 claus i/o obert el cofre, vindrà el Marcel i us reganyarà.
+				   <hr>
+				   Per a controlar el personatge utilitza les tecles <u>WSAD</u> i la tecla espai per obrir objectes o parlar.
+
+				   <div style="font-weight: bold;text-decoration: underline;margin:20px">
+					Bona sort!
+					</div>
+			   </div>
+			   
+
+			   <button type="submit" class="butoNomPersonatge">JUGAR!</button>
+		   </article>
+			
+			<article id="obrirPartida">
+				<h1>
+					<img src="img/ornament-esquerra.png" class="ornament" alt="ornament-esquerra">
+					PARTIDES
+					<img src="img/ornament-dreta.png" class="ornament" alt="ornament-dreta">
+			   </h1>
+
+				<table>
+					<tr>
+						<th>NOM</th>
+						<th>MINUTS RESTANTS</th>
+						<th>CLAUS</th>
+						<th>DATA</th>
+					</tr>
+					<tr onclick="window.location.replace('https://www.w3schools.com')">
+						<td>Pere</td>
+						<td>4:30</td>
+						<td>2</td>
+						<td>01/05/2020</td>
+					</tr>
+					<tr onclick="window.location.replace('https://www.w3schools.com')">
+						<td>Maria</td>
+						<td>2:15</td>
+						<td>3</td>
+						<td>05/05/2020</td>
+					</tr>
+				</table>
+
+				<button class="enrera" onclick="mostra('menuPrincipal', 'obrirPartida')">&#8630 Enrera</button>
+		   </article>
+
+		</div>
+
+		<footer>
+			La Pineda 2019-20
+			<div>Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+		</footer>
+
+	</body>
+</html>
+

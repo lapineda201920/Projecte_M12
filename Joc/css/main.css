@@ -1,0 +1,188 @@
+
+/*----------FONT-FAMILY----------*/
+@font-face {
+	font-family: "AdvoCut";
+	src: url("../fonts/e44df502907461539c98df084a0fda77.eot"); /* IE9*/
+	src: url("../fonts/e44df502907461539c98df084a0fda77.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+	url("../fonts/e44df502907461539c98df084a0fda77.woff2") format("woff2"), /* chrome、firefox */
+	url("../fonts/e44df502907461539c98df084a0fda77.woff") format("woff"), /* chrome、firefox */
+	url("../fonts/e44df502907461539c98df084a0fda77.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+	url("../fonts/e44df502907461539c98df084a0fda77.svg#AdvoCut") format("svg"); /* iOS 4.1- */
+}
+
+/*----------GENERAL----------*/
+body{
+
+	font-family: 'AdvoCut';
+	background-color: #90c7c4;
+	background-image: url('../img/fonsPantalla.gif');
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+
+header{
+
+	position: fixed;
+  	left: 0;
+  	top: 10%;
+  	width: 100%;
+  	font-size: 50px;
+  	font-weight: bold;
+	text-align:center;
+}
+
+.partida{
+
+	font-family: 'AdvoCut';
+	background-color: #4CAF50;
+	border: 2px solid #b2af9b;
+	color: white;
+	margin: 10px;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 24px;
+	width: 50%;
+}
+
+#crearPartida, #obrirPartida, #informacioPartida{
+
+	display: none;
+}
+
+hr{
+
+	width: 50%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.informacioPartida{
+
+	font-size: 15px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.enrera{
+
+	font-family: 'AdvoCut';
+	background-color: #4CAF50;
+	border: 2px solid #b2af9b;
+	color: white;
+	margin: 10px;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	position: absolute;
+    bottom: 0;
+    left: 0;
+	font-size: 24px;
+	width: 200px;
+}
+
+.container{
+
+	width: 844px;
+	height: 400px;
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	margin-left: -422px;
+	margin-top: -182px;
+	font-size: 20px;
+	text-align: center;
+	z-index: 2;
+	background-color: #dbd8c4;
+	border-radius: 5px;
+}
+
+.ornament{
+
+	height:24px;
+	width:62px;
+	display:inline-block;
+	margin:0 15px;
+	position:relative;
+	top:7px;
+}
+
+.personatge{
+
+	height:60px;
+	width:50px;
+	display:inline-block;
+	margin:0 15px;
+	position:relative;
+	top:7px;
+}
+
+#nomPersonatge{
+
+	font-family: 'AdvoCut';
+	color: white;
+	text-shadow: 2px 2px grey;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 0 10px;
+	border: 2px dashed #b2af9b;
+	font-size: 20px;
+	border-radius: 6px;
+	height: 41px;
+	width: 50%;
+	background: rgba(0,0,0,0.05);
+	text-align: center;
+}
+
+.butoNomPersonatge{
+
+	font-family: 'AdvoCut';
+	border: 2px solid #b2af9b;
+	background: rgba(0,0,0,0.09);
+	border-radius: 15px;
+	font-size: 20px;
+	padding: 15px 30px;
+	margin-top: 10px;
+}
+.butoNomPersonatge:hover {
+
+	background: rgba(0,0,0,0.15);
+}
+
+table{
+
+	width: 90%;
+	border-collapse: collapse;
+	margin-left:auto; 
+    margin-right:auto;
+}
+
+table, th, td {
+
+	border: 2px dashed #b2af9b;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+th {
+
+	background-color: #a5823c;
+}
+
+tr:hover {
+
+	background: rgba(0,0,0,0.15);
+}
+
+
+footer {
+
+	position: fixed;
+  	left: 0;
+  	bottom: 5%;
+  	width: 100%;
+	text-align:center;
+	color:grey;
+	/*https://www.w3schools.com/howto/howto_css_fixed_footer.asp*/
+}
+
