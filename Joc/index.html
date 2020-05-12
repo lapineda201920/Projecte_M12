@@ -21,29 +21,9 @@
 			<link href="//db.onlinewebfonts.com/c/e44df502907461539c98df084a0fda77?family=AdvoCut" rel="stylesheet" type="text/css"/>
 
 		<!----------JS---------->
-
+			<script src="js/index.js"></script>
 	</head>
 	<body>
-
-		<script>
-			function mostra(articleATapar, articleAMostrar) {
-
-			  var antic = document.getElementById(articleATapar);
-			  var nou = document.getElementById(articleAMostrar);
-			  
-			  if (nou.style.display == 'none') {
-
-				nou.style.display = 'block';
-				antic.style.display = 'none';
-			  }
-			  else {
-
-				nou.style.display = 'none';
-				antic.style.display = 'block';
-			  }
-			}
-			
-		</script>
 
 		<header>
 			La Pineda Adventure
@@ -51,18 +31,18 @@
 		
 		<div class="container">
 
-			<article id="menuPrincipal">
+			<article id="menuPrincipal" style="display: block;">
 				<h1>
 					<img src="img/ornament-esquerra.png" class="ornament" alt="ornament-esquerra">
 					INICI
 					<img src="img/ornament-dreta.png" class="ornament" alt="ornament-dreta">
 			   </h1>
 
-			   <button class="partida" onclick="mostra('menuPrincipal', 'crearPartida')">Nova Partida</button> 
-			   <button class="partida" onclick="mostra('menuPrincipal', 'obrirPartida')">Partides Guardada</button> 
+			   <button type="button" class="partida" onclick="mostra('menuPrincipal', 'crearPartida')">Nova Partida</button> 
+			   <button type="button" class="partida" onclick="mostra('menuPrincipal', 'obrirPartida')">Partides Guardada</button> 
 		   </article>
 
-			<article id="crearPartida">
+			<article id="crearPartida" style="display: none;">
   	           <h1>
   	                <img src="img/ornament-esquerra.png" class="ornament" alt="ornament-esquerra">
   	            	NOVA PARTIDA
@@ -71,16 +51,18 @@
 
             	<img src="img/personatge.png" class="personatge" alt="personatge">
 
-            	<form action="#" method="GET" id="formulariNomPersonatge">
-                	<input type="text" id="nomPersonatge" name="nomPersonatge" placeholder="Nom del personatge" minlength="1" maxlength="15">
-                </form>
+            	<form action="none" method="GET" id="formulariNomPersonatge">
 
-                <button type="submit" form="formulariNomPersonatge" onclick="mostra('crearPartida', 'informacioPartida')" class="butoNomPersonatge">CONTINUAR</button>
+                	<input type="text" id="nomPersonatge" name="nomPersonatge" placeholder="Nom del personatge" minlength="1" maxlength="15">
+				</form>
+
+				<button type="button" form="formulariNomPersonatge" onclick="mostra('crearPartida', 'informacioPartida')" class="butoNomPersonatge">CONTINUAR</button>
 				
-				<button class="enrera" onclick="mostra('menuPrincipal', 'crearPartida')">&#8630 Enrera</button>
+				<button type="button" class="enrera" onclick="mostra('menuPrincipal', 'crearPartida')">&#8630 Enrera</button>
+                
 			</article>
 
-			<article id="informacioPartida">
+			<article id="informacioPartida" style="display: none;">
 				<h1>
 					<img src="img/ornament-esquerra.png" class="ornament" alt="ornament-esquerra">
 					BENVINGUT AL JOC
@@ -105,10 +87,12 @@
 			   </div>
 			   
 
-			   <button type="submit" class="butoNomPersonatge">JUGAR!</button>
+			   <button type="submit" onclick="agafarNom()" class="butoNomPersonatge">JUGAR!</button>
+
+			   <button type="button" class="enrera" onclick="mostra('crearPartida', 'informacioPartida')">&#8630 Enrera</button>
 		   </article>
 			
-			<article id="obrirPartida">
+			<article id="obrirPartida" style="display: none;">
 				<h1>
 					<img src="img/ornament-esquerra.png" class="ornament" alt="ornament-esquerra">
 					PARTIDES
@@ -122,13 +106,13 @@
 						<th>CLAUS</th>
 						<th>DATA</th>
 					</tr>
-					<tr onclick="window.location.replace('https://www.w3schools.com')">
+					<tr onclick="window.location.replace('lapineda.html')">
 						<td>Pere</td>
 						<td>4:30</td>
 						<td>2</td>
 						<td>01/05/2020</td>
 					</tr>
-					<tr onclick="window.location.replace('https://www.w3schools.com')">
+					<tr onclick="window.location.replace('lapineda.html')">
 						<td>Maria</td>
 						<td>2:15</td>
 						<td>3</td>
@@ -136,7 +120,7 @@
 					</tr>
 				</table>
 
-				<button class="enrera" onclick="mostra('menuPrincipal', 'obrirPartida')">&#8630 Enrera</button>
+				<button type="button" class="enrera" onclick="mostra('menuPrincipal', 'obrirPartida')">&#8630 Enrera</button>
 		   </article>
 
 		</div>

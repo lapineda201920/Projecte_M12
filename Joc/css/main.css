@@ -31,6 +31,51 @@ header{
 	text-align:center;
 }
 
+hr{
+
+	width: 50%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+table{
+
+	width: 90%;
+	border-collapse: collapse;
+	margin-left:auto; 
+    margin-right:auto;
+}
+
+table, th, td {
+
+	border: 2px dashed #b2af9b;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+th {
+
+	background-color: #a5823c;
+}
+
+tr:hover {
+
+	background: rgba(0,0,0,0.15);
+}
+
+
+footer {
+
+	position: fixed;
+  	left: 0;
+  	bottom: 5%;
+  	width: 100%;
+	text-align:center;
+	color:grey;
+	/*https://www.w3schools.com/howto/howto_css_fixed_footer.asp*/
+}
+
+/*----------ESPECIFIC----------*/
 .partida{
 
 	font-family: 'AdvoCut';
@@ -46,17 +91,7 @@ header{
 	width: 50%;
 }
 
-#crearPartida, #obrirPartida, #informacioPartida{
 
-	display: none;
-}
-
-hr{
-
-	width: 50%;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
 .informacioPartida{
 
 	font-size: 15px;
@@ -144,45 +179,45 @@ hr{
 	padding: 15px 30px;
 	margin-top: 10px;
 }
+
 .butoNomPersonatge:hover {
 
 	background: rgba(0,0,0,0.15);
 }
 
-table{
+.contenidorInformacioJoc {
 
-	width: 90%;
-	border-collapse: collapse;
-	margin-left:auto; 
-    margin-right:auto;
+    border: 8px dashed #993;
+	background-color: #444;
+	height: 30px;
+	border-bottom: 0px;
+	color: #fff;
+	font-size: 20px;
+	text-align: center;
+	padding: 10px;
+	padding-top:20px;
+	padding-bottom:20px;
 }
 
-table, th, td {
+.containerJoc{
 
-	border: 2px dashed #b2af9b;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	width: 844px;
+	height: 470px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -422px;
+	margin-top: -182px;
+	font-size: 20px;
+	text-align: center;
+	z-index: 2;
+	background-color: #dbd8c4;
+	border-radius: 5px;
 }
 
-th {
+.separacioInformacio{
 
-	background-color: #a5823c;
+	display: inline-block;
+	width: 32%;
+	height: 30px;
 }
-
-tr:hover {
-
-	background: rgba(0,0,0,0.15);
-}
-
-
-footer {
-
-	position: fixed;
-  	left: 0;
-  	bottom: 5%;
-  	width: 100%;
-	text-align:center;
-	color:grey;
-	/*https://www.w3schools.com/howto/howto_css_fixed_footer.asp*/
-}
-
