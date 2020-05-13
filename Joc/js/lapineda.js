@@ -5,7 +5,7 @@
 // --> Variables
     nomJugador = "";
     claus = -1;
-    temps = 301; // = 5:01 minuts
+    temps = 301; // 301= 5:01 minuts
 
 // --> Funcions
 
@@ -17,18 +17,23 @@
 
         // Si el segon és 0, perquè no es vegi així (5:0), li afegeixo un 0 extra (5:00)
         var extra = "";
-        if (segons == 0){
+        if (segons <= 9){
             
             extra = "0";
         }
         
-        document.getElementById("temps").innerHTML = "<u>Temps Restant</u><br>"+minuts+":"+segons+extra; 
+        document.getElementById("temps").innerHTML = "<u>Temps Restant</u><br>"+minuts+":"+extra+segons; 
 
         
         if (temps == 0) {
 
             alert("Game Over!");
+
+            // PAREM EL TEMPS
             clearInterval(intervalTemps);
+
+            // PAREM EL JOC, PER LO QUE EL JUGADOR NO ES PODRÀ MOURE
+            game.destroy()
         }
     }
     var intervalTemps = setInterval(restarTemps,1000);
@@ -52,12 +57,12 @@
     function nom(){
 
         var url = window.location.search;
-        console.log(url);
+        //console.log(url);
 
         nomJugador = url.split('=');
         nomJugador = nomJugador[1];
         nomJugador = decodeURI(nomJugador);
-        console.log(nomJugador);
+        //console.log(nomJugador);
         
         document.getElementById("nomJugador").innerHTML = "<u>Nom Jugador</u><br>"+nomJugador; 
     }

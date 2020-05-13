@@ -1,0 +1,66 @@
+Adrià A.C.
+SCRUM Diari
+
+_____________________________
+Des de que es va obrir l'entrega LLIURAMENT INICIAL fins al Diumenge 10 de Maig
+
+
+1) Que vas fer?
+- Durant aquest temps vaig estar investigant quin tipo de projecte voldría fer e com fer-lo. Pel camí, vaig estar fent algunes roves/exemples, per a veure com podia quedar la cosa.
+
+2) Quins problemes vas tenir?
+- Desconeixement de les tecnologies, per lo que no entenia casi res. Errors de permisos, errors de versions, etc.
+
+3) Que faré avui?
+- Avui tinc pensat començar a fer un exemple de com tinc pensat definitivament el projecte.
+
+4) Quins problemes puc tenir?
+- Ho desconec.
+
+_____________________________
+Dilluns 11 de Maig
+
+
+1) Que vas fer?
+- Vaig fer proves amb Phaser i amb Tiled (un programa que ens permet crear mapes (de tiles) de manera més senzilla).
+
+2) Quins problemes vas tenir?
+- Errors de connexió, errors de variables.
+
+3) Que faré avui?
+- Avui tinc pensat començar a fer el projecte definitivament. Començaré fent la pàgina d'índex, on es podrà accedir (encara no funcional) a les partides que s'han guardat, i on també es podrà crear una nova partida.
+
+4) Quins problemes puc tenir?
+- En aquest punt no crec que em sorgeixi cap problema.
+
+_____________________________
+Dimats 12 de Maig
+
+
+1) Que vas fer?
+- Vaig fer la pàgina d'index i el seu css i js.
+
+2) Quins problemes vas tenir?
+- Cap en concret.
+
+3) Que faré avui?
+- Avui tinc pensat començar a fer la pàgina de lapineda.html on implementaré el Phaser. Un cop creada la pàgina, implementarè un mapa que vaig fer amb Tiled el 9 de Maig (més o menys), he provaré a veure com queda la barreja de la pàgina lapineda.html, amb el seu js (pel contador de temps, claus i nom), i l'implementació de la visualització del mapa.
+
+4) Quins problemes puc tenir?
+- En aquest punt desconec els problemes que pogui tenir.
+
+_____________________________
+Dimecres 13 de Maig
+
+
+1) Que vas fer?
+- Vaig fer la pàgina lapineda.html, amb el seu js (pel contador de temps, claus i nom), i l'implementació de la visualització del mapa.
+
+2) Quins problemes vas tenir?
+- Errors de JSON, errors en la creació del mapa amb Tiled, errors de CORS.
+
+3) Que faré avui?
+- Avui tinc pensat fer que un jugador pogui caminar pel mapa i que xoqui en els llocs on ha de xocar (per a que no pogui traspassar parets o el mapa mateix)
+
+4) Quins problemes puc tenir?
+- En aquest punt desconec els problemes que pogui tenir.
