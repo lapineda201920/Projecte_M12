@@ -25,7 +25,8 @@ const config = {
 const game = new Phaser.Game(config);
 let cursors;
 let jugador;
-
+var xocaAlumne = false;
+var xocaProfessor = false;
 
 
 function preload() {
@@ -68,7 +69,9 @@ function create() {
   jugador.setOffset(0, 20);
   this.physics.add.collider(jugador, arbres);
   this.physics.add.collider(jugador, superficies);
-  this.physics.add.collider(jugador, persones);
+  this.physics.add.collider(jugador, persones, function(){
+    xocaAlumne = true;
+  });
 
 
   // 7 - LI DIEM QUINES CAPES VOLEM QUE S'EXECUTI EL 'COLLIDES'
@@ -165,14 +168,24 @@ function create() {
 
 
   // 10 - ESCRIBIM TEXT A LA PANTALLA
-  this.add
-    .text(16, 16, "Utilitza les fletxes per moure't!", {
+  informacioMoure = this.add
+    .text(15, 15, "Utilitza les fletxes per moure't, i la 'D' per parlar!", {
       font: "20px monospace",
       fill: "#ffffff",
       padding: { x: 20, y: 10 },
       backgroundColor: "#000000"
     })
     .setScrollFactor(0);
+
+  resposta = this.add
+      .text(15, 15, "Alumne: !", {
+      font: "20px monospace",
+      fill: "#000000",
+      padding: { x: 20, y: 10 },
+      backgroundColor: "#ffffff"
+    })
+    .setScrollFactor(0);
+    resposta.setVisible(false);
 }
 
 
@@ -255,5 +268,35 @@ function update(time, delta) {
       
       jugador.setTexture("ninoJugador", "jugador-davant.png");
     }
+  }
+
+
+  // 17 - SI EL JUGADOR XOCA / ESTÀ AL COSTAT D'ALGUN --ALUMNE--
+  if (xocaAlumne){
+
+    // I SI PREM LA TECLA D
+    this.input.keyboard.once("keydown_D", event => {
+
+      informacioMoure.setVisible(false);
+      
+      var respostesAlumnes = [
+        "Quina calor que fa", "Bon dia", "Aquesta pràctica és molt complicada", 
+        "No trobo les ulleres", "Has vist al Samuel?", "Has vist a l'Olga?", 
+        "Has vist al Marcel?", "CORONAVIRUS!", "Saps com sol·lucionar l'error de Dockers?",
+        "Ja has fet l'IPOP?", "Avui hi ha entrepà de pinxos?", "Ufff..."
+      ];
+      var numeroRespostaAleatoria = Math.floor((Math.random() * respostesAlumnes.length));
+      resposta.text = "Alumne: "+respostesAlumnes[numeroRespostaAleatoria];
+
+      resposta.setVisible(true);
+
+      setTimeout(function(){
+        informacioMoure.setVisible(true);
+        resposta.setVisible(false);
+        },1000);
+
+    });
+
+    xocaAlumne = false;
   }
 }
