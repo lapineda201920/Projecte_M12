@@ -64,3 +64,19 @@ Dimecres 13 de Maig
 
 4) Quins problemes puc tenir?
 - En aquest punt desconec els problemes que pogui tenir.
+
+_____________________________
+Dijous 14 de Maig
+
+
+1) Que vas fer?
+- Vaig fer que un jugador que pogues caminar pel mapa i que xoques en els llocs on havia de xocar.
+
+2) Quins problemes vas tenir?
+- Errors de creació d'imatges pel jugador i la seva implementació al joc.
+
+3) Que faré avui?
+- Avui tinc pensat fer que un jugador pogui parlar amb algun NPC (Non-Player-Characters).
+
+4) Quins problemes puc tenir?
+- Ho desconec.
