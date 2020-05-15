@@ -25,9 +25,20 @@ const config = {
 const game = new Phaser.Game(config);
 let cursors;
 let jugador;
-var xocaAlumne = false;
-var xocaProfessor = false;
 
+var xocaAlumne = false;
+
+var xocaSamuel = false;
+var clauSamuel = false;
+var xocaOlga = false;
+var clauOlga = false;
+var xocaXavier = false;
+var clauXavier = false;
+var xocaSergi = false;
+var clauSergi = false;
+var xocaAlicia = false;
+var clauAlicia = false;
+var xocaCafeteria = false;
 
 function preload() {
 
@@ -56,7 +67,15 @@ function create() {
   const terra = map.createStaticLayer("Capa terra", tileset, 0, 0);
   const arbres = map.createStaticLayer("Capa arbres", tileset, 0, 0);
   const superficies = map.createStaticLayer("Capa superficies", tileset, 0, 0);
+
   const persones = map.createStaticLayer("Capa persones", tileset, 0, 0);
+
+  const samuel = map.createStaticLayer("Capa Samuel", tileset, 0, 0);
+  const olga = map.createStaticLayer("Capa Olga", tileset, 0, 0);
+  const xavier = map.createStaticLayer("Capa Xavier", tileset, 0, 0);
+  const sergi = map.createStaticLayer("Capa Sergi", tileset, 0, 0);
+  const alicia = map.createStaticLayer("Capa Alicia", tileset, 0, 0);
+  const cafeteria = map.createStaticLayer("Capa Cafeteria", tileset, 0, 0);
 
 
   // 5 - LOCALITZEM EL LLOC ON FARÀ SPAWN EL JUGADOR
@@ -67,17 +86,46 @@ function create() {
   jugador = this.physics.add.sprite(llocSpawn.x, llocSpawn.y, "ninoJugador", "jugador-esquerra.png");
   jugador.setSize(30, 30);
   jugador.setOffset(0, 20);
+
   this.physics.add.collider(jugador, arbres);
   this.physics.add.collider(jugador, superficies);
+
   this.physics.add.collider(jugador, persones, function(){
     xocaAlumne = true;
+  });
+
+  this.physics.add.collider(jugador, samuel, function(){
+    xocaSamuel = true;
+  });
+  this.physics.add.collider(jugador, olga, function(){
+    xocaOlga = true;
+  });
+  this.physics.add.collider(jugador, xavier, function(){
+    xocaXavier = true;
+  });
+  this.physics.add.collider(jugador, sergi, function(){
+    xocaSergi = true;
+  });
+  this.physics.add.collider(jugador, alicia, function(){
+    xocaAlicia = true;
+  });
+  this.physics.add.collider(jugador, cafeteria, function(){
+    xocaCafeteria = true;
   });
 
 
   // 7 - LI DIEM QUINES CAPES VOLEM QUE S'EXECUTI EL 'COLLIDES'
   arbres.setCollisionByProperty({ collides: true });
   superficies.setCollisionByProperty({ collides: true });
+
   persones.setCollisionByProperty({ collides: true });
+
+  samuel.setCollisionByProperty({ collides: true });
+  olga.setCollisionByProperty({ collides: true });
+  xavier.setCollisionByProperty({ collides: true });
+  sergi.setCollisionByProperty({ collides: true });
+  alicia.setCollisionByProperty({ collides: true });
+  cafeteria.setCollisionByProperty({ collides: true });
 
 
   
@@ -178,7 +226,7 @@ function create() {
     .setScrollFactor(0);
 
   resposta = this.add
-      .text(15, 15, "Alumne: !", {
+      .text(15, 15, "Persona: !", {
       font: "20px monospace",
       fill: "#000000",
       padding: { x: 20, y: 10 },
@@ -299,4 +347,141 @@ function update(time, delta) {
 
     xocaAlumne = false;
   }
+
+
+  // 18 - SI EL JUGADOR XOCA / ESTÀ AL COSTAT D'ALGUN --PROFESSOR--
+  var tempsResposta;
+
+
+  // --> SAMUEL <--//
+  if (xocaSamuel){
+
+    // I SI PREM LA TECLA D
+    this.input.keyboard.once("keydown_D", event => {
+
+      informacioMoure.setVisible(false);
+
+      resposta.text = "Samuel: Bon dia!\n\n[Prem 'X' per continuar]";
+      resposta.setVisible(true);
+
+      tempsResposta = setTimeout(function(){
+        informacioMoure.setVisible(true);
+        resposta.setVisible(false);
+        xocaSamuel = false;
+        },2000);
+
+      // SI EL JUGADOR PREM EL BOTÓ 'X' EN MENYS D'1 SEGON, 
+      this.input.keyboard.once("keydown_X", event => {
+
+        if(clauSamuel){
+
+          informacioMoure.setVisible(false);
+
+          resposta.text = "Samuel: Ja has anat al lavabo?";
+          resposta.setVisible(true);
+
+          tempsResposta = setTimeout(function(){
+            informacioMoure.setVisible(true);
+            resposta.setVisible(false);
+            xocaSamuel = false;
+            },1000);
+        }
+        else{
+          
+          var contador = 0;
+          // --FALTA-- EL JUGADOR NO ES PODRÀ MOURE
+          clearTimeout(tempsResposta); // EL TEMPORITZADOR ES PARARÀ (PER LO QUE LA CONVERSACIÓ NO S'AMAGARÀ)
+
+          var preguntes = [
+            "És Docker un projecte de codi obert?", "Ja has fet totes les pràctiques de Laravel?", 
+            "Quants alumnes hi ha a la cafeteria?", "M'he trobat una clau, és teva?"
+          ];
+
+          var ajudes = [
+            "Opció 'A' per 'Sí' i 'B' per 'No'", "Opció 'A' per 'Sí' i 'B' per 'No'", 
+            "Opció 'A' per '14' i 'B' per '12'", "Opció 'A' per 'Sí' i 'B' per 'No'"
+          ];
+
+          var respostes = [
+            1, 1, 
+            2, 1
+          ];
+
+          // I EL PROFESSOR LI FARÀ PREGUNTES
+          function repetir(){
+            
+            resposta.text = "Samuel: Unes preguntes ràpides:\n\n--> " + preguntes[contador] + "\n\n[" + ajudes[contador] + "]";
+
+            tempsResposta = setTimeout(function(){
+              informacioMoure.setVisible(true);
+              resposta.setVisible(false);
+              xocaSamuel = false;
+              },9000);
+
+            var respostaJugador;
+            game.input.keyboard.once("keydown_A", event => {
+              
+              clearTimeout(tempsResposta);
+              respostaJugador = 1;
+            });
+
+            game.input.keyboard.once("keydown_B", event => {
+              
+              clearTimeout(tempsResposta);
+              respostaJugador = 2;
+            });
+
+            
+
+            console.log(respostaJugador);
+            console.log(respostes[contador]);
+            if (respostaJugador == respostes[contador]){
+
+              contador++;
+
+              if (contador >= 4){
+
+                sumarClaus();
+                resposta.text = "Samuel: Aquí tens la clau! Per cert, no tenies que anar al lavabo?";
+                tempsResposta = setTimeout(function(){
+                  informacioMoure.setVisible(true);
+                  resposta.setVisible(false);
+                  xocaSamuel = false;
+                  },1000);
+              }
+            }
+            /*else{
+
+              informacioMoure.setVisible(true);
+              resposta.setVisible(false);
+              xocaSamuel = false;
+              break;
+            }*/
+          }
+          repetir();
+        }
+      });
+    });
+  }
+
+  /*
+  if (xocaOlga){
+    
+  }
+
+  if (xocaXavier){
+
+  }
+
+  if (xocaSergi){
+    
+  }
+
+  if (xocaAlicia){
+   
+  }
+
+  if (xocaCafeteria){
+    
+  }*/
 }
