@@ -80,3 +80,19 @@ Dijous 14 de Maig
 
 4) Quins problemes puc tenir?
 - Ho desconec.
+
+_____________________________
+Divendres 15 de Maig
+
+
+1) Que vas fer?
+- Vaig fer que un jugador pogui parlar amb algun NPC (Non-Player-Characters).
+
+2) Quins problemes vas tenir?
+- Que detectes els alumnes i que mostres el que deia l'alumne i al cap d'una estona elimines el missatge.
+
+3) Que faré avui?
+- Avui tinc pensat fer que un jugador pogui parlar amb els professors.
+
+4) Quins problemes puc tenir?
+- Ho desconec.
