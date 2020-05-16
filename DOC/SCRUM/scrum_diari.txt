@@ -96,3 +96,19 @@ Divendres 15 de Maig
 
 4) Quins problemes puc tenir?
 - Ho desconec.
+
+_____________________________
+Dissabte 16 de Maig
+
+
+1) Que vas fer?
+- Vaig estar fent que un jugador pogues parlar amb els professors.
+
+2) Quins problemes vas tenir?
+- Que el update de phaser es parès fins que el jugador toquès alguna tecla del teclat.
+
+3) Que faré avui?
+- Avui tinc pensat continuar intentar que un jugador pogui parlar amb els professors.
+
+4) Quins problemes puc tenir?
+- Ho desconec.
