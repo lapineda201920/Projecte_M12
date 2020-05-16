@@ -42,10 +42,10 @@
 - I per acabar fem:
 	- sudo docker-compose up -d
 
-## Recorda: Per a que funcioni el projecte s'ha d'executar el docker-comnpose --> sudo docker-compose up
+## Recorda: Per a que funcioni el projecte s'ha d'executar el docker-compose --> sudo docker-compose up
 
 5. Anem al buscador d'internet, i introduïm:
-	- localhost/RUTA-DE-LES-CARPETES-ON-ESTÀ-EL-JOC/Joc/index.html (Ex: http://localhost/provaProjecteM12/Jocindex.html)
+	- localhost/RUTA-DE-LES-CARPETES-ON-ESTÀ-EL-JOC/Joc/index.html (Ex: http://localhost/provaProjecteM12/Joc/index.html)
 
 
 I ja està!
