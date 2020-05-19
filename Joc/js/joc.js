@@ -1,4 +1,5 @@
 
+
 // CONFIGURACIÓ DE COM S'EXECUTARÀ PHASER
 const config = {
   type: Phaser.AUTO,
@@ -26,19 +27,37 @@ const game = new Phaser.Game(config);
 let cursors;
 let jugador;
 
+
+var contador = 0;
+var contadorAccertades = 0;
+var hiParla = false;
+var tempsResposta = null;
+var respostaJugador = 0;
+
+/*********ALUMNE************/
 var xocaAlumne = false;
 
-var xocaSamuel = false;
-var clauSamuel = false;
-var xocaOlga = false;
-var clauOlga = false;
-var xocaXavier = false;
-var clauXavier = false;
-var xocaSergi = false;
-var clauSergi = false;
-var xocaAlicia = false;
-var clauAlicia = false;
+/**********SAMUEL***********/
+var xocaSamuel, clauSamuel = false;
+
+/**********OLGA***********/
+var xocaOlga, clauOlga = false;
+
+/**********XAVIER***********/
+var xocaXavier, clauXavier = false;
+
+/**********SERGI***********/
+var xocaSergi, clauSergi = false;
+
+/**********ALICIA***********/
+var xocaAlicia, clauAlicia = false;
+
+/*********CAFETERIA***********/
 var xocaCafeteria = false;
+
+
+
+
 
 function preload() {
 
@@ -67,9 +86,7 @@ function create() {
   const terra = map.createStaticLayer("Capa terra", tileset, 0, 0);
   const arbres = map.createStaticLayer("Capa arbres", tileset, 0, 0);
   const superficies = map.createStaticLayer("Capa superficies", tileset, 0, 0);
-
   const persones = map.createStaticLayer("Capa persones", tileset, 0, 0);
-
   const samuel = map.createStaticLayer("Capa Samuel", tileset, 0, 0);
   const olga = map.createStaticLayer("Capa Olga", tileset, 0, 0);
   const xavier = map.createStaticLayer("Capa Xavier", tileset, 0, 0);
@@ -83,43 +100,23 @@ function create() {
 
 
   // 6 - LI AFEGIM FÍSICA AL JUGADOR (LLOC ON APAREIXARÀ-X, LLOC ON APAREIXARÀ-Y, "", "")
-  jugador = this.physics.add.sprite(llocSpawn.x, llocSpawn.y, "ninoJugador", "jugador-esquerra.png");
-  jugador.setSize(30, 30);
-  jugador.setOffset(0, 20);
+  jugador = this.physics.add.sprite(llocSpawn.x, llocSpawn.y, "ninoJugador", "jugador-esquerra.png").setSize(30, 30).setOffset(0, 10);
 
   this.physics.add.collider(jugador, arbres);
   this.physics.add.collider(jugador, superficies);
-
-  this.physics.add.collider(jugador, persones, function(){
-    xocaAlumne = true;
-  });
-
-  this.physics.add.collider(jugador, samuel, function(){
-    xocaSamuel = true;
-  });
-  this.physics.add.collider(jugador, olga, function(){
-    xocaOlga = true;
-  });
-  this.physics.add.collider(jugador, xavier, function(){
-    xocaXavier = true;
-  });
-  this.physics.add.collider(jugador, sergi, function(){
-    xocaSergi = true;
-  });
-  this.physics.add.collider(jugador, alicia, function(){
-    xocaAlicia = true;
-  });
-  this.physics.add.collider(jugador, cafeteria, function(){
-    xocaCafeteria = true;
-  });
+  this.physics.add.collider(jugador, persones, function(){ xocaAlumne = true;});
+  this.physics.add.collider(jugador, samuel, function(){ xocaSamuel = true;});
+  this.physics.add.collider(jugador, olga, function(){ xocaOlga = true;});
+  this.physics.add.collider(jugador, xavier, function(){ xocaXavier = true;});
+  this.physics.add.collider(jugador, sergi, function(){ xocaSergi = true;});
+  this.physics.add.collider(jugador, alicia, function(){ xocaAlicia = true;});
+  this.physics.add.collider(jugador, cafeteria, function(){ xocaCafeteria = true;});
 
 
   // 7 - LI DIEM QUINES CAPES VOLEM QUE S'EXECUTI EL 'COLLIDES'
   arbres.setCollisionByProperty({ collides: true });
   superficies.setCollisionByProperty({ collides: true });
-
   persones.setCollisionByProperty({ collides: true });
-
   samuel.setCollisionByProperty({ collides: true });
   olga.setCollisionByProperty({ collides: true });
   xavier.setCollisionByProperty({ collides: true });
@@ -127,31 +124,6 @@ function create() {
   alicia.setCollisionByProperty({ collides: true });
   cafeteria.setCollisionByProperty({ collides: true });
 
-
-  
-
-  // 5.B - AMB EL SEGÜENT CODI PODEM VEURE QUINES COSES LI HEM ACTIVAT EL 'COLLIDES'
-  
-  /*const debugGraphics = this.add.graphics().setAlpha(0.75);
-  arbres.renderDebug(debugGraphics, {
-    tileColor: null,
-    collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
-    faceColor: new Phaser.Display.Color(40, 39, 37, 255)
-  });
-
-  superficies.renderDebug(debugGraphics, {
-    tileColor: null,
-    collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
-    faceColor: new Phaser.Display.Color(40, 39, 37, 255)
-  });
-
-  persones.renderDebug(debugGraphics, {
-    tileColor: null,
-    collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
-    faceColor: new Phaser.Display.Color(40, 39, 37, 255)
-  });*/
-  
-  
 
   // 8 - CREEM ELS FRAMES AMB LES IMATGES CORRESPONENTS (PRÈVIAMENT CARREGADES AMB EL JSON)
   this.anims.create({
@@ -211,29 +183,12 @@ function create() {
   const camera = this.cameras.main;
   camera.startFollow(jugador);
   camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-
   cursors = this.input.keyboard.createCursorKeys();
 
 
   // 10 - ESCRIBIM TEXT A LA PANTALLA
-  informacioMoure = this.add
-    .text(15, 15, "Utilitza les fletxes per moure't, i la 'D' per parlar!", {
-      font: "20px monospace",
-      fill: "#ffffff",
-      padding: { x: 20, y: 10 },
-      backgroundColor: "#000000"
-    })
-    .setScrollFactor(0);
-
-  resposta = this.add
-      .text(15, 15, "Persona: !", {
-      font: "20px monospace",
-      fill: "#000000",
-      padding: { x: 20, y: 10 },
-      backgroundColor: "#ffffff"
-    })
-    .setScrollFactor(0);
-    resposta.setVisible(false);
+  informacioMoure = this.add.text(15, 15, "Utilitza les fletxes per moure't, i la 'D' per parlar!", { font: "20px monospace", fill: "#ffffff", padding: { x: 20, y: 10 }, backgroundColor: "#000000"}).setScrollFactor(0);
+  resposta = this.add.text(15, 15, "Persona: !", { font: "20px monospace", fill: "#000000", padding: { x: 20, y: 10 }, backgroundColor: "#ffffff"}).setScrollFactor(0).setVisible(false);
 }
 
 
@@ -253,25 +208,13 @@ function update(time, delta) {
 
 
   // 12 - MOVIMENT HORITZONTAL
-  if (cursors.left.isDown) {
-
-    jugador.body.setVelocityX(-velocitat);
-  }
-  else if (cursors.right.isDown) {
-
-    jugador.body.setVelocityX(velocitat);
-  }
+  if (cursors.left.isDown) { jugador.body.setVelocityX(-velocitat);}
+  else if (cursors.right.isDown) { jugador.body.setVelocityX(velocitat);}
 
 
   // 13 - MOVIMENT VERTICAL
-  if (cursors.up.isDown) {
-
-    jugador.body.setVelocityY(-velocitat);
-  }
-  else if (cursors.down.isDown) {
-
-    jugador.body.setVelocityY(velocitat);
-  }
+  if (cursors.up.isDown) { jugador.body.setVelocityY(-velocitat);}
+  else if (cursors.down.isDown) { jugador.body.setVelocityY(velocitat);}
 
 
   // 14 - NORMALITZAR LA VELOCITAT PERQUÈ EL JUGADOR NO ES MOGUI MÉS DEPRESSA EN DIAGONAL
@@ -279,49 +222,38 @@ function update(time, delta) {
 
 
   // 15 - ACTUALITZEM L'ANIMACIÓ SI CAMINA ...
-  if (cursors.left.isDown) {
-
-    jugador.anims.play("jugador-esquerra-caminar", true);
-  }
-  else if (cursors.right.isDown) {
-
-    jugador.anims.play("jugador-dreta-caminar", true);
-  }
-  else if (cursors.up.isDown) {
-
-    jugador.anims.play("jugador-esquena-caminar", true);
-  }
-  else if (cursors.down.isDown) {
-
-    jugador.anims.play("jugador-davant-caminar", true);
-  }
+  if (cursors.left.isDown) { jugador.anims.play("jugador-esquerra-caminar", true);}
+  else if (cursors.right.isDown) { jugador.anims.play("jugador-dreta-caminar", true);}
+  else if (cursors.up.isDown) { jugador.anims.play("jugador-esquena-caminar", true);}
+  else if (cursors.down.isDown) { jugador.anims.play("jugador-davant-caminar", true);}
   else{
 
     // 16 - SINÓ CAMINA, LA PAREM E POSSEM UNA IMATGE ON NO CAMINI
-
     jugador.anims.stop();
 
-    if (velocitatPrevia.x < 0){
-      jugador.setTexture("ninoJugador", "jugador-esquerra.png");
-    }
-    else if (velocitatPrevia.x > 0){
-
-      jugador.setTexture("ninoJugador", "jugador-dreta.png");
-    }
-    else if (velocitatPrevia.y < 0) {
-      
-      jugador.setTexture("ninoJugador", "jugador-esquena.png");
-    }
-    else if (velocitatPrevia.y > 0) {
-      
-      jugador.setTexture("ninoJugador", "jugador-davant.png");
-    }
+    if (velocitatPrevia.x < 0){ jugador.setTexture("ninoJugador", "jugador-esquerra.png");}
+    else if (velocitatPrevia.x > 0){ jugador.setTexture("ninoJugador", "jugador-dreta.png");}
+    else if (velocitatPrevia.y < 0) { jugador.setTexture("ninoJugador", "jugador-esquena.png");}
+    else if (velocitatPrevia.y > 0) { jugador.setTexture("ninoJugador", "jugador-davant.png");}
   }
 
+
+  
+  if (cursors.left.isDown || cursors.right.isDown || cursors.up.isDown || cursors.down.isDown){
+
+    this.input.keyboard.once("keydown_D", event => {
+
+      informacioMoure.setVisible(true);
+      resposta.setVisible(false);
+      clearTimeout(tempsResposta);
+      cursors = this.input.keyboard.createCursorKeys();
+    });
+  }
 
   // 17 - SI EL JUGADOR XOCA / ESTÀ AL COSTAT D'ALGUN --ALUMNE--
   if (xocaAlumne){
 
+    xocaAlumne = false;
     // I SI PREM LA TECLA D
     this.input.keyboard.once("keydown_D", event => {
 
@@ -331,137 +263,129 @@ function update(time, delta) {
         "Quina calor que fa", "Bon dia", "Aquesta pràctica és molt complicada", 
         "No trobo les ulleres", "Has vist al Samuel?", "Has vist a l'Olga?", 
         "Has vist al Marcel?", "CORONAVIRUS!", "Saps com sol·lucionar l'error de Dockers?",
-        "Ja has fet l'IPOP?", "Avui hi ha entrepà de pinxos?", "Ufff..."
+        "Ja has fet la pràctica?", "Avui hi ha entrepà de pinxos?", "Ufff..."
       ];
       var numeroRespostaAleatoria = Math.floor((Math.random() * respostesAlumnes.length));
       resposta.text = "Alumne: "+respostesAlumnes[numeroRespostaAleatoria];
 
       resposta.setVisible(true);
 
-      setTimeout(function(){
+      tempsResposta = setTimeout(function(){
         informacioMoure.setVisible(true);
         resposta.setVisible(false);
-        },1000);
-
+        },2000);
     });
-
-    xocaAlumne = false;
   }
 
 
   // 18 - SI EL JUGADOR XOCA / ESTÀ AL COSTAT D'ALGUN --PROFESSOR--
-  var tempsResposta;
-
-
   // --> SAMUEL <--//
   if (xocaSamuel){
 
-    // I SI PREM LA TECLA D
+    
+    // PREGUNTES QUE FARÀ EL PROFESSOR
+    var preguntes = [
+      "És Docker un projecte de codi obert?", "Ja has fet totes les pràctiques de Laravel?", 
+      "Quants alumnes hi ha a la cafeteria?", "M'he trobat una clau, és teva?"
+    ];
+    var ajudes = [
+      "Opció 'A' per 'Sí' i 'B' per 'No'", "Opció 'A' per 'Sí' i 'B' per 'No'", 
+      "Opció 'A' per '14' i 'B' per '12'", "Opció 'A' per 'Sí' i 'B' per 'No'"
+    ];
+    var respostes = [
+      1, 1, 
+      2, 1
+    ];
+
+    var samuel = new Professor("Samuel", preguntes, ajudes, respostes, xocaSamuel, clauSamuel);
+
+
+
+    // --> SI PREM LA TECLA D
     this.input.keyboard.once("keydown_D", event => {
 
-      informacioMoure.setVisible(false);
-
-      resposta.text = "Samuel: Bon dia!\n\n[Prem 'X' per continuar]";
-      resposta.setVisible(true);
-
-      tempsResposta = setTimeout(function(){
-        informacioMoure.setVisible(true);
-        resposta.setVisible(false);
-        xocaSamuel = false;
-        },2000);
-
-      // SI EL JUGADOR PREM EL BOTÓ 'X' EN MENYS D'1 SEGON, 
-      this.input.keyboard.once("keydown_X", event => {
-
-        if(clauSamuel){
-
-          informacioMoure.setVisible(false);
-
-          resposta.text = "Samuel: Ja has anat al lavabo?";
-          resposta.setVisible(true);
-
-          tempsResposta = setTimeout(function(){
-            informacioMoure.setVisible(true);
-            resposta.setVisible(false);
-            xocaSamuel = false;
-            },1000);
-        }
-        else{
-          
-          var contador = 0;
-          // --FALTA-- EL JUGADOR NO ES PODRÀ MOURE
-          clearTimeout(tempsResposta); // EL TEMPORITZADOR ES PARARÀ (PER LO QUE LA CONVERSACIÓ NO S'AMAGARÀ)
-
-          var preguntes = [
-            "És Docker un projecte de codi obert?", "Ja has fet totes les pràctiques de Laravel?", 
-            "Quants alumnes hi ha a la cafeteria?", "M'he trobat una clau, és teva?"
-          ];
-
-          var ajudes = [
-            "Opció 'A' per 'Sí' i 'B' per 'No'", "Opció 'A' per 'Sí' i 'B' per 'No'", 
-            "Opció 'A' per '14' i 'B' per '12'", "Opció 'A' per 'Sí' i 'B' per 'No'"
-          ];
-
-          var respostes = [
-            1, 1, 
-            2, 1
-          ];
-
-          // I EL PROFESSOR LI FARÀ PREGUNTES
-          function repetir(){
-            
-            resposta.text = "Samuel: Unes preguntes ràpides:\n\n--> " + preguntes[contador] + "\n\n[" + ajudes[contador] + "]";
-
-            tempsResposta = setTimeout(function(){
-              informacioMoure.setVisible(true);
-              resposta.setVisible(false);
-              xocaSamuel = false;
-              },9000);
-
-            var respostaJugador;
-            game.input.keyboard.once("keydown_A", event => {
-              
-              clearTimeout(tempsResposta);
-              respostaJugador = 1;
-            });
-
-            game.input.keyboard.once("keydown_B", event => {
-              
-              clearTimeout(tempsResposta);
-              respostaJugador = 2;
-            });
-
-            
-
-            console.log(respostaJugador);
-            console.log(respostes[contador]);
-            if (respostaJugador == respostes[contador]){
-
-              contador++;
-
-              if (contador >= 4){
-
-                sumarClaus();
-                resposta.text = "Samuel: Aquí tens la clau! Per cert, no tenies que anar al lavabo?";
-                tempsResposta = setTimeout(function(){
-                  informacioMoure.setVisible(true);
-                  resposta.setVisible(false);
-                  xocaSamuel = false;
-                  },1000);
-              }
-            }
-            /*else{
-
-              informacioMoure.setVisible(true);
-              resposta.setVisible(false);
-              xocaSamuel = false;
-              break;
-            }*/
-          }
-          repetir();
-        }
-      });
+      samuel.conversacioProfe();
     });
+
+    // --> SI PREM LA TECLA X
+    this.input.keyboard.once("keydown_X", event => {
+
+      hiParla = true;
+    });
+
+
+    if (hiParla){
+
+      samuel.continuacioConversacio();
+
+      if (!clauSamuel){
+
+        samuel.pregunta(contador);
+
+        this.input.keyboard.once("keydown_A", event => {
+
+          respostaJugador = 1;
+        });
+        this.input.keyboard.once("keydown_B", event => {
+
+          respostaJugador = 2;
+        });
+
+
+        if (respostaJugador == 1 || respostaJugador == 2){
+
+          contador++;
+          // SI LA RESPOSTA ÉS CORRECTE
+          if (respostaJugador == respostes[contador]){
+
+
+            contadorAccertades++;
+
+            // I SI HA RESPÓS TOTES LES PREGUNTES
+            if (contadorAccertades >= 4){
+
+              cursors = this.input.keyboard.createCursorKeys();
+              samuel.fiPreguntes();
+              hiParla = false;
+              clauSamuel = true; // POSSEM TRUE, CONFORME EL PROFESSOR JA NO POT TORNAR A DONAR UNA CLAU
+              xocaSamuel = false;
+
+              tempsResposta = setTimeout(function(){
+                informacioMoure.setVisible(true);
+                resposta.setVisible(false);
+                },4000);
+            }
+          }
+          else{
+
+            if(contador >= 4 && contadorAccertades != 4){
+
+              samuel.error();
+              cursors = this.input.keyboard.createCursorKeys();
+              hiParla = false;
+              xocaSamuel = false;
+
+              tempsResposta = setTimeout(function(){
+                informacioMoure.setVisible(true);
+                resposta.setVisible(false);
+                },2000);
+            }
+          }
+          respostaJugador = 0;
+        }
+      }
+      else{
+
+        cursors = this.input.keyboard.createCursorKeys();
+        hiParla = false;
+        xocaSamuel = false;
+
+        tempsResposta = setTimeout(function(){
+          informacioMoure.setVisible(true);
+          resposta.setVisible(false);
+          },2000);
+      }
+    }
   }
 
   /*
