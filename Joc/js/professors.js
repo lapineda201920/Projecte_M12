@@ -43,7 +43,6 @@ class Professor {
 
   error() {
 
-    contador = 0;
     resposta.text = this.nom + ": Doncs res...";
   }
 
@@ -51,7 +50,6 @@ class Professor {
   fiPreguntes() {
 
     sumarClaus(); // SUMEM UNA CLAU
-    contador = 0;
     resposta.text = this.nom + ": Aquí tens la clau!\nPer cert, no tenies que anar al lavabo?";
   }
 }

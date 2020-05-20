@@ -28,8 +28,7 @@ let cursors;
 let jugador;
 
 
-var contador = 0;
-var contadorAccertades = 0;
+var contador = contadorAccertades = 0;
 var hiParla = false;
 var tempsResposta = null;
 var respostaJugador = 0;
@@ -38,19 +37,19 @@ var respostaJugador = 0;
 var xocaAlumne = false;
 
 /**********SAMUEL***********/
-var xocaSamuel, clauSamuel = false;
+var xocaSamuel = clauSamuel = false;
 
 /**********OLGA***********/
-var xocaOlga, clauOlga = false;
+var xocaOlga = clauOlga = false;
 
 /**********XAVIER***********/
-var xocaXavier, clauXavier = false;
+var xocaXavier = clauXavier = false;
 
 /**********SERGI***********/
-var xocaSergi, clauSergi = false;
+var xocaSergi = clauSergi = false;
 
 /**********ALICIA***********/
-var xocaAlicia, clauAlicia = false;
+var xocaAlicia = clauAlicia = false;
 
 /*********CAFETERIA***********/
 var xocaCafeteria = false;
@@ -285,12 +284,12 @@ function update(time, delta) {
     
     // PREGUNTES QUE FARÀ EL PROFESSOR
     var preguntes = [
-      "És Docker un projecte de codi obert?", "Ja has fet totes les pràctiques de Laravel?", 
-      "Quants alumnes hi ha a la cafeteria?", "M'he trobat una clau, és teva?"
+      "Com es deia abans Java?", "Quantes variables hi ha a Java?", 
+      "Quants alumnes hi ha a la cafeteria?", "Quina és la mascota de PHP?"
     ];
     var ajudes = [
-      "Opció 'A' per 'Sí' i 'B' per 'No'", "Opció 'A' per 'Sí' i 'B' per 'No'", 
-      "Opció 'A' per '14' i 'B' per '12'", "Opció 'A' per 'Sí' i 'B' per 'No'"
+      "Opció 'A' per 'Oak' i 'B' per 'Yoak'", "Opció 'A' per '5' i 'B' per '4'", 
+      "Opció 'A' per '14' i 'B' per '12'", "Opció 'A' per 'Elefant Blau' i 'B' per 'Ratolí blau'"
     ];
     var respostes = [
       1, 1, 
@@ -333,11 +332,9 @@ function update(time, delta) {
 
 
         if (respostaJugador == 1 || respostaJugador == 2){
-
-          contador++;
+          
           // SI LA RESPOSTA ÉS CORRECTE
           if (respostaJugador == respostes[contador]){
-
 
             contadorAccertades++;
 
@@ -349,6 +346,8 @@ function update(time, delta) {
               hiParla = false;
               clauSamuel = true; // POSSEM TRUE, CONFORME EL PROFESSOR JA NO POT TORNAR A DONAR UNA CLAU
               xocaSamuel = false;
+              contador = -1;
+              contadorAccertades = 0;
 
               tempsResposta = setTimeout(function(){
                 informacioMoure.setVisible(true);
@@ -356,29 +355,29 @@ function update(time, delta) {
                 },4000);
             }
           }
-          else{
 
-            if(contador >= 4 && contadorAccertades != 4){
+          if(contador >= 3){
 
-              samuel.error();
-              cursors = this.input.keyboard.createCursorKeys();
-              hiParla = false;
-              xocaSamuel = false;
+            samuel.error();
+            cursors = this.input.keyboard.createCursorKeys();
+            hiParla = xocaSamuel = false;
+            contador = -1;
+            contadorAccertades = 0;
 
-              tempsResposta = setTimeout(function(){
-                informacioMoure.setVisible(true);
-                resposta.setVisible(false);
-                },2000);
-            }
+            tempsResposta = setTimeout(function(){
+              informacioMoure.setVisible(true);
+              resposta.setVisible(false);
+              },2000);
           }
+
+          contador++;
           respostaJugador = 0;
         }
       }
       else{
 
         cursors = this.input.keyboard.createCursorKeys();
-        hiParla = false;
-        xocaSamuel = false;
+        hiParla = xocaSamuel = false;
 
         tempsResposta = setTimeout(function(){
           informacioMoure.setVisible(true);
@@ -388,24 +387,433 @@ function update(time, delta) {
     }
   }
 
-  /*
+  
   if (xocaOlga){
     
+    // PREGUNTES QUE FARÀ EL PROFESSOR
+    var preguntes = [
+      "En JS, null és un objecte?", "En JS, quin és el màxim de decimals?", 
+      "En JS, es pot reasignar un valor\na una variable declarada amb const?", "És Badalona una ciutat segura?"
+    ];
+    var ajudes = [
+      "Opció 'A' per 'Sí' i 'B' per 'No'", "Opció 'A' per '15' i 'B' per '17'", 
+      "Opció 'A' per 'Sí' i 'B' per 'No'", "Opció 'A' per 'Sí.. (mentida)' i 'B' per 'No'"
+    ];
+    var respostes = [
+      1, 2, 
+      2, 1
+    ];
+
+    var olga = new Professor("Olga", preguntes, ajudes, respostes, xocaOlga, clauOlga);
+
+
+
+    // --> SI PREM LA TECLA D
+    this.input.keyboard.once("keydown_D", event => {
+
+      olga.conversacioProfe();
+    });
+
+    // --> SI PREM LA TECLA X
+    this.input.keyboard.once("keydown_X", event => {
+
+      hiParla = true;
+    });
+
+
+    if (hiParla){
+
+      olga.continuacioConversacio();
+
+      if (!clauOlga){
+
+        olga.pregunta(contador);
+
+        this.input.keyboard.once("keydown_A", event => {
+
+          respostaJugador = 1;
+        });
+        this.input.keyboard.once("keydown_B", event => {
+
+          respostaJugador = 2;
+        });
+
+
+        if (respostaJugador == 1 || respostaJugador == 2){
+          
+          // SI LA RESPOSTA ÉS CORRECTE
+          if (respostaJugador == respostes[contador]){
+
+            contadorAccertades++;
+
+            // I SI HA RESPÓS TOTES LES PREGUNTES
+            if (contadorAccertades >= 4){
+
+              cursors = this.input.keyboard.createCursorKeys();
+              olga.fiPreguntes();
+              hiParla = false;
+              clauOlga = true; // POSSEM TRUE, CONFORME EL PROFESSOR JA NO POT TORNAR A DONAR UNA CLAU
+              xocaOlga = false;
+              contador = -1;
+              contadorAccertades = 0;
+
+              tempsResposta = setTimeout(function(){
+                informacioMoure.setVisible(true);
+                resposta.setVisible(false);
+                },4000);
+            }
+          }
+
+          if(contador >= 3){
+
+            olga.error();
+            cursors = this.input.keyboard.createCursorKeys();
+            hiParla = xocaOlga = false;
+            contador = -1;
+            contadorAccertades = 0;
+
+            tempsResposta = setTimeout(function(){
+              informacioMoure.setVisible(true);
+              resposta.setVisible(false);
+              },2000);
+          }
+
+          contador++;
+          respostaJugador = 0;
+        }
+      }
+      else{
+
+        cursors = this.input.keyboard.createCursorKeys();
+        hiParla = xocaOlga = false;
+
+        tempsResposta = setTimeout(function(){
+          informacioMoure.setVisible(true);
+          resposta.setVisible(false);
+          },2000);
+      }
+    }
   }
 
+  
   if (xocaXavier){
 
+    // PREGUNTES QUE FARÀ EL PROFESSOR
+    var preguntes = [
+      "Voldras fer lo del concurs Programa-me?", "SEGUR???", 
+      "I tutoria??", "Val, val .... Ja has fet l'IPOP?"
+    ];
+    var ajudes = [
+      "Opció 'A' per 'Sí' i 'B' per 'No'", "Opció 'A' per 'Sí' i 'B' per 'No'", 
+      "Opció 'A' per 'Sí' i 'B' per 'No'", "Opció 'A' per 'Sí..' i 'B' per 'No'"
+    ];
+    var respostes = [
+      1, 1, 
+      1, 1
+    ];
+
+    var xavier = new Professor("Xavier", preguntes, ajudes, respostes, xocaXavier, clauXavier);
+
+
+
+    // --> SI PREM LA TECLA D
+    this.input.keyboard.once("keydown_D", event => {
+
+      xavier.conversacioProfe();
+    });
+
+    // --> SI PREM LA TECLA X
+    this.input.keyboard.once("keydown_X", event => {
+
+      hiParla = true;
+    });
+
+
+    if (hiParla){
+
+      xavier.continuacioConversacio();
+
+      if (!clauXavier){
+
+        xavier.pregunta(contador);
+
+        this.input.keyboard.once("keydown_A", event => {
+
+          respostaJugador = 1;
+        });
+        this.input.keyboard.once("keydown_B", event => {
+
+          respostaJugador = 2;
+        });
+
+
+        if (respostaJugador == 1 || respostaJugador == 2){
+          
+          // SI LA RESPOSTA ÉS CORRECTE
+          if (respostaJugador == respostes[contador]){
+
+            contadorAccertades++;
+
+            // I SI HA RESPÓS TOTES LES PREGUNTES
+            if (contadorAccertades >= 4){
+
+              cursors = this.input.keyboard.createCursorKeys();
+              xavier.fiPreguntes();
+              hiParla = false;
+              clauXavier = true; // POSSEM TRUE, CONFORME EL PROFESSOR JA NO POT TORNAR A DONAR UNA CLAU
+              xocaXavier = false;
+              contador = -1;
+              contadorAccertades = 0;
+
+              tempsResposta = setTimeout(function(){
+                informacioMoure.setVisible(true);
+                resposta.setVisible(false);
+                },4000);
+            }
+          }
+
+          if(contador >= 3){
+
+            xavier.error();
+            cursors = this.input.keyboard.createCursorKeys();
+            hiParla = xocaXavier = false;
+            contador = -1;
+            contadorAccertades = 0;
+
+            tempsResposta = setTimeout(function(){
+              informacioMoure.setVisible(true);
+              resposta.setVisible(false);
+              },2000);
+          }
+
+          contador++;
+          respostaJugador = 0;
+        }
+      }
+      else{
+
+        cursors = this.input.keyboard.createCursorKeys();
+        hiParla = xocaXavier = false;
+
+        tempsResposta = setTimeout(function(){
+          informacioMoure.setVisible(true);
+          resposta.setVisible(false);
+          },2000);
+      }
+    }
   }
 
   if (xocaSergi){
     
+    // PREGUNTES QUE FARÀ EL PROFESSOR
+    var preguntes = [
+      "Amb flexbox, quina opció de justify-content\nens centra els items amb un marge de separació\nde les parets?", "Amb Canvas, amb quina comanda escribim text\na la pantalla?", 
+      "En Jquery, com faríem un selector d'id per a\nun <p> amb id='p'?", "És Fabric.js un framework de Canvas?"
+    ];
+    var ajudes = [
+      "Opció 'A' per 'space-between' i 'B' per 'space-around'", "Opció 'A' per 'ctx.stroke();' i 'B' per 'ctx.fillText();'", 
+      "Opció 'A' per '$('p')' i 'B' per '$('#p')'", "Opció 'A' per 'Sí' i 'B' per 'No'"
+    ];
+    var respostes = [
+      2, 2, 
+      2, 1
+    ];
+
+    var sergi = new Professor("Sergi", preguntes, ajudes, respostes, xocaSergi, clauSergi);
+
+
+
+    // --> SI PREM LA TECLA D
+    this.input.keyboard.once("keydown_D", event => {
+
+      sergi.conversacioProfe();
+    });
+
+    // --> SI PREM LA TECLA X
+    this.input.keyboard.once("keydown_X", event => {
+
+      hiParla = true;
+    });
+
+
+    if (hiParla){
+
+      sergi.continuacioConversacio();
+
+      if (!clauSergi){
+
+        sergi.pregunta(contador);
+
+        this.input.keyboard.once("keydown_A", event => {
+
+          respostaJugador = 1;
+        });
+        this.input.keyboard.once("keydown_B", event => {
+
+          respostaJugador = 2;
+        });
+
+
+        if (respostaJugador == 1 || respostaJugador == 2){
+          
+          // SI LA RESPOSTA ÉS CORRECTE
+          if (respostaJugador == respostes[contador]){
+
+            contadorAccertades++;
+
+            // I SI HA RESPÓS TOTES LES PREGUNTES
+            if (contadorAccertades >= 4){
+
+              cursors = this.input.keyboard.createCursorKeys();
+              sergi.fiPreguntes();
+              hiParla = false;
+              clauSergi = true; // POSSEM TRUE, CONFORME EL PROFESSOR JA NO POT TORNAR A DONAR UNA CLAU
+              xocaSergi = false;
+              contador = -1;
+              contadorAccertades = 0;
+
+              tempsResposta = setTimeout(function(){
+                informacioMoure.setVisible(true);
+                resposta.setVisible(false);
+                },4000);
+            }
+          }
+
+          if(contador >= 3){
+
+            sergi.error();
+            cursors = this.input.keyboard.createCursorKeys();
+            hiParla = xocaSergi = false;
+            contador = -1;
+            contadorAccertades = 0;
+
+            tempsResposta = setTimeout(function(){
+              informacioMoure.setVisible(true);
+              resposta.setVisible(false);
+              },2000);
+          }
+
+          contador++;
+          respostaJugador = 0;
+        }
+      }
+      else{
+
+        cursors = this.input.keyboard.createCursorKeys();
+        hiParla = xocaSergi = false;
+
+        tempsResposta = setTimeout(function(){
+          informacioMoure.setVisible(true);
+          resposta.setVisible(false);
+          },2000);
+      }
+    }
   }
 
   if (xocaAlicia){
    
-  }
+    // PREGUNTES QUE FARÀ EL PROFESSOR
+    var preguntes = [
+      "En el terminal, quina comanda utilitzem\nper a tancar el terminal?", "En el terminal, quina comanda utilitzem\nper a netejar el terminal?", 
+      "En el terminal, quina comanda utilitzem\nper a crear un document sense editar-lo?", "En el terminal, quina comanda utilitzem\nper a moure el cursor al principi\nde la línia?"
+    ];
+    var ajudes = [
+      "Opció 'A' per 'Ctrl+D' i 'B' per 'Ctrl+E'", "Opció 'A' per 'Ctrl+K' i 'B' per 'Ctrl+L'", 
+      "Opció 'A' per 'touch NOM_ARXIU' i 'B' per 'touch -d NOM_ARXIU'", "Opció 'A' per 'Ctrl+B' i 'B' per 'Ctrl+A'"
+    ];
+    var respostes = [
+      1, 2, 
+      1, 2
+    ];
 
-  if (xocaCafeteria){
-    
-  }*/
+    var alicia = new Professor("Alicia", preguntes, ajudes, respostes, xocaSergi, clauSergi);
+
+
+
+    // --> SI PREM LA TECLA D
+    this.input.keyboard.once("keydown_D", event => {
+
+      alicia.conversacioProfe();
+    });
+
+    // --> SI PREM LA TECLA X
+    this.input.keyboard.once("keydown_X", event => {
+
+      hiParla = true;
+    });
+
+
+    if (hiParla){
+
+      alicia.continuacioConversacio();
+
+      if (!clauAlicia){
+
+        alicia.pregunta(contador);
+
+        this.input.keyboard.once("keydown_A", event => {
+
+          respostaJugador = 1;
+        });
+        this.input.keyboard.once("keydown_B", event => {
+
+          respostaJugador = 2;
+        });
+
+
+        if (respostaJugador == 1 || respostaJugador == 2){
+          
+          // SI LA RESPOSTA ÉS CORRECTE
+          if (respostaJugador == respostes[contador]){
+
+            contadorAccertades++;
+
+            // I SI HA RESPÓS TOTES LES PREGUNTES
+            if (contadorAccertades >= 4){
+
+              cursors = this.input.keyboard.createCursorKeys();
+              alicia.fiPreguntes();
+              hiParla = false;
+              clauAlicia = true; // POSSEM TRUE, CONFORME EL PROFESSOR JA NO POT TORNAR A DONAR UNA CLAU
+              xocaAlicia = false;
+              contador = -1;
+              contadorAccertades = 0;
+
+              tempsResposta = setTimeout(function(){
+                informacioMoure.setVisible(true);
+                resposta.setVisible(false);
+                },4000);
+            }
+          }
+
+          if(contador >= 3){
+
+            alicia.error();
+            cursors = this.input.keyboard.createCursorKeys();
+            hiParla = xocaAlicia = false;
+            contador = -1;
+            contadorAccertades = 0;
+
+            tempsResposta = setTimeout(function(){
+              informacioMoure.setVisible(true);
+              resposta.setVisible(false);
+              },2000);
+          }
+
+          contador++;
+          respostaJugador = 0;
+        }
+      }
+      else{
+
+        cursors = this.input.keyboard.createCursorKeys();
+        hiParla = xocaAlicia = false;
+
+        tempsResposta = setTimeout(function(){
+          informacioMoure.setVisible(true);
+          resposta.setVisible(false);
+          },2000);
+      }
+    }
+  }
 }

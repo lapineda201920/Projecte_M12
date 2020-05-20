@@ -48,7 +48,10 @@
         
         if (claus == 5) {
 
-            alert("Has Guanyat!")
+            alert("Has Guanyat!");
+            
+            // PAREM EL JOC, PER LO QUE EL JUGADOR NO ES PODRÀ MOURE
+            game.destroy()
         }
     }
 
