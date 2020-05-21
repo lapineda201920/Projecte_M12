@@ -160,3 +160,19 @@ Dimecres 20 de Maig
 
 4) Quins problemes puc tenir?
 - Ho desconec.
+
+_____________________________
+Dijous 21 de Maig
+
+
+1) Que vas fer?
+- Vaig estar aplicant el mateix codi (el qual sembla funcionar correctament) a la resta de professors
+
+2) Quins problemes vas tenir?
+- Cap d'important.
+
+3) Que faré avui?
+- Avui tinc pensat aplicar el servidor al joc, per a que es poguin guardar les partides.
+
+4) Quins problemes puc tenir?
+- Ho desconec.
