@@ -162,7 +162,7 @@ Dimecres 20 de Maig
 - Ho desconec.
 
 _____________________________
-Dijous 21 de Maig
+Dijous i Divendres 21i 22 de Maig
 
 
 1) Que vas fer?
@@ -173,6 +173,22 @@ Dijous 21 de Maig
 
 3) Que faré avui?
 - Avui tinc pensat aplicar el servidor al joc, per a que es poguin guardar les partides.
+
+4) Quins problemes puc tenir?
+- Ho desconec.
+
+_____________________________
+Dilluns 25 de Maig
+
+
+1) Que vas fer?
+- Vaig estar aplicant el servidor al joc, per a que es poguin guardar les partides.
+
+2) Quins problemes vas tenir?
+- Error de require.
+
+3) Que faré avui?
+- Avui tinc pensat continuar aplicant el servidor al joc, per a que es poguin guardar les partides, i fer una millor resposta a l'hora de guanyar o perdre una partida.
 
 4) Quins problemes puc tenir?
 - Ho desconec.
