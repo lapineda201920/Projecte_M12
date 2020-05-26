@@ -192,3 +192,19 @@ Dilluns 25 de Maig
 
 4) Quins problemes puc tenir?
 - Ho desconec.
+
+_____________________________
+Dilluns 26 de Maig
+
+
+1) Que vas fer?
+- Vaig estar aplicant el servidor al joc, per a que es poguin guardar les partides, i fer una millor resposta a l'hora de guanyar o perdre una partida.
+
+2) Quins problemes vas tenir?
+- Errors de require.
+
+3) Que faré avui?
+- Avui tinc pensat continuar aplicant el servidor al joc, per a que es poguin guardar les partides amb l'ajut del Samuel.
+
+4) Quins problemes puc tenir?
+- Ho desconec.
