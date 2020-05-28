@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>phaser</string>
         <key>textureFileName</key>
-        <filename>miweb/Projecte_M12/Joc/img/jugador.png</filename>
+        <filename>../Joc/img/jugador.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -132,7 +132,7 @@
             <key>json</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>miweb/Projecte_M12/Joc/img/jugador.json</filename>
+                <filename>jugador.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -181,11 +181,11 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-davant-caminar.000.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-davant-caminar.001.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-davant-caminar.002.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-davant-caminar.003.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-davant.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-davant-caminar.000.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-davant-caminar.001.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-davant-caminar.002.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-davant-caminar.003.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-davant.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -200,21 +200,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-dreta-caminar.000.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-dreta-caminar.001.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-dreta-caminar.002.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-dreta-caminar.003.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-dreta.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-esquena-caminar.000.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-esquena-caminar.001.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-esquena-caminar.002.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-esquena-caminar.003.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-esquena.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-esquerra-caminar.000.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-esquerra-caminar.001.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-esquerra-caminar.002.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-esquerra-caminar.003.png</key>
-            <key type="filename">miweb/Projecte_M12/Joc/img/jugador/jugador-esquerra.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-dreta-caminar.000.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-dreta-caminar.001.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-dreta-caminar.002.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-dreta-caminar.003.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-dreta.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-esquena-caminar.000.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-esquena-caminar.001.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-esquena-caminar.002.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-esquena-caminar.003.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-esquena.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-esquerra-caminar.000.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-esquerra-caminar.001.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-esquerra-caminar.002.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-esquerra-caminar.003.png</key>
+            <key type="filename">../Joc/img/jugador/jugador-esquerra.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -232,26 +232,26 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-davant-caminar.000.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-davant-caminar.001.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-davant-caminar.002.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-davant-caminar.003.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-davant.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-dreta-caminar.000.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-dreta-caminar.001.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-dreta-caminar.002.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-dreta-caminar.003.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-dreta.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-esquena-caminar.000.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-esquena-caminar.001.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-esquena-caminar.002.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-esquena-caminar.003.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-esquena.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-esquerra-caminar.000.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-esquerra-caminar.001.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-esquerra-caminar.002.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-esquerra-caminar.003.png</filename>
-            <filename>miweb/Projecte_M12/Joc/img/jugador/jugador-esquerra.png</filename>
+            <filename>../Joc/img/jugador/jugador-davant-caminar.000.png</filename>
+            <filename>../Joc/img/jugador/jugador-davant-caminar.001.png</filename>
+            <filename>../Joc/img/jugador/jugador-davant-caminar.002.png</filename>
+            <filename>../Joc/img/jugador/jugador-davant-caminar.003.png</filename>
+            <filename>../Joc/img/jugador/jugador-davant.png</filename>
+            <filename>../Joc/img/jugador/jugador-dreta-caminar.000.png</filename>
+            <filename>../Joc/img/jugador/jugador-dreta-caminar.001.png</filename>
+            <filename>../Joc/img/jugador/jugador-dreta-caminar.002.png</filename>
+            <filename>../Joc/img/jugador/jugador-dreta-caminar.003.png</filename>
+            <filename>../Joc/img/jugador/jugador-dreta.png</filename>
+            <filename>../Joc/img/jugador/jugador-esquena-caminar.000.png</filename>
+            <filename>../Joc/img/jugador/jugador-esquena-caminar.001.png</filename>
+            <filename>../Joc/img/jugador/jugador-esquena-caminar.002.png</filename>
+            <filename>../Joc/img/jugador/jugador-esquena-caminar.003.png</filename>
+            <filename>../Joc/img/jugador/jugador-esquena.png</filename>
+            <filename>../Joc/img/jugador/jugador-esquerra-caminar.000.png</filename>
+            <filename>../Joc/img/jugador/jugador-esquerra-caminar.001.png</filename>
+            <filename>../Joc/img/jugador/jugador-esquerra-caminar.002.png</filename>
+            <filename>../Joc/img/jugador/jugador-esquerra-caminar.003.png</filename>
+            <filename>../Joc/img/jugador/jugador-esquerra.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
