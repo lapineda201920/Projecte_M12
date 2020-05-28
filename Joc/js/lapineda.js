@@ -27,13 +27,28 @@
         
         if (temps == 0) {
 
-            alert("Game Over!");
+            // MOSTREM LA IMATGE DEL RESULTAT
+            var resposta = document.createElement("img");
+            resposta.setAttribute("src", "img/game_over.jpg");
+            resposta.setAttribute("width", "70%");
+            resposta.setAttribute("height", "670");
+            resposta.setAttribute("alt", "Game Over");
+            resposta.style.position = "fixed";
+            resposta.style.zIndex = "5";
+            resposta.style.top = "25%";
+            resposta.style.margin = "0px 0px 0px 200px";
+            document.body.appendChild(resposta);
 
             // PAREM EL TEMPS
             clearInterval(intervalTemps);
 
             // PAREM EL JOC, PER LO QUE EL JUGADOR NO ES PODRÀ MOURE
-            game.destroy()
+            game.destroy();
+
+            // I AL CAP DE 5 SEGONS, CANVIEM LA PÀGINA PER LA D'INICI
+            setTimeout(function(){
+                window.open("index.html", "_self"); 
+            }, 5000);
         }
     }
     var intervalTemps = setInterval(restarTemps,1000);
@@ -48,10 +63,25 @@
         
         if (claus == 5) {
 
-            alert("Has Guanyat!");
+            // MOSTREM LA IMATGE DEL RESULTAT
+            var resposta = document.createElement("img");
+            resposta.setAttribute("src", "img/win.jpg");
+            resposta.setAttribute("width", "70%");
+            resposta.setAttribute("height", "670");
+            resposta.setAttribute("alt", "Game Over");
+            resposta.style.position = "fixed";
+            resposta.style.zIndex = "5";
+            resposta.style.top = "25%";
+            resposta.style.margin = "0px 0px 0px 200px";
+            document.body.appendChild(resposta);
             
             // PAREM EL JOC, PER LO QUE EL JUGADOR NO ES PODRÀ MOURE
             game.destroy()
+
+            // I AL CAP DE 5 SEGONS, CANVIEM LA PÀGINA PER LA D'INICI
+            setTimeout(function(){
+                window.open("index.html", "_self"); 
+            }, 5000);
         }
     }
 

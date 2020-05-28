@@ -78,7 +78,7 @@ function create() {
 
 
   // 3 - AFEGIM LES IMATGES EN ELS 'TILES' CORRESPONENTS
-  const tileset = map.addTilesetImage("tileset-shinygold2", "tiles");
+  const tileset = map.addTilesetImage("tileset-shinygold2", "tiles", 1, 1);
 
 
   // 4 - INDIQUEM QUINES CAPES VOLEM QUE MOSTRI
