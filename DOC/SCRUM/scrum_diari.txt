@@ -194,7 +194,7 @@ Dilluns 25 de Maig
 - Ho desconec.
 
 _____________________________
-Dilluns 26 de Maig
+Dimarts 26 al Divendres 29 de Maig
 
 
 1) Que vas fer?
@@ -204,7 +204,23 @@ Dilluns 26 de Maig
 - Errors de require.
 
 3) Que faré avui?
-- Avui tinc pensat continuar aplicant el servidor al joc, per a que es poguin guardar les partides amb l'ajut del Samuel.
+- Avui tinc pensat continuar aplicant el servidor al joc, per a que es poguin guardar les partides amb l'ajut del Samuel i Olga.
+
+4) Quins problemes puc tenir?
+- Ho desconec.
+
+_____________________________
+Dissabte 30 de Maig
+
+
+1) Que vas fer?
+- Vaig estar aplicant el servidor al joc, per a que es poguin guardar les partides.
+
+2) Quins problemes vas tenir?
+- Errors de socket.io, errors del server fet amb node.js, etc.
+
+3) Que faré avui?
+- Avui tinc pensat continuar aplicant el servidor al joc, per a que es poguin guardar les partided.
 
 4) Quins problemes puc tenir?
 - Ho desconec.
