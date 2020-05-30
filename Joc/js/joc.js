@@ -78,7 +78,7 @@ function create() {
 
 
   // 3 - AFEGIM LES IMATGES EN ELS 'TILES' CORRESPONENTS
-  const tileset = map.addTilesetImage("tileset-shinygold2", "tiles", 1, 1);
+  const tileset = map.addTilesetImage("tileset-shinygold2", "tiles");
 
 
   // 4 - INDIQUEM QUINES CAPES VOLEM QUE MOSTRI
@@ -188,6 +188,9 @@ function create() {
   // 10 - ESCRIBIM TEXT A LA PANTALLA
   informacioMoure = this.add.text(15, 15, "Utilitza les fletxes per moure't, i la 'D' per parlar!", { font: "20px monospace", fill: "#ffffff", padding: { x: 20, y: 10 }, backgroundColor: "#000000"}).setScrollFactor(0);
   resposta = this.add.text(15, 15, "Persona: !", { font: "20px monospace", fill: "#000000", padding: { x: 20, y: 10 }, backgroundColor: "#ffffff"}).setScrollFactor(0).setVisible(false);
+  guardar = this.add.text(590, 410, "Guardar Partida!", { font: "20px monospace", fill: "#000000", padding: { x: 20, y: 10 }, backgroundColor: "#4caf50"}).setScrollFactor(0);
+
+  guardar.setInteractive(new Phaser.Geom.Rectangle(0, 0, guardar.width, guardar.height), Phaser.Geom.Rectangle.Contains);
 }
 
 
@@ -199,6 +202,16 @@ function create() {
 function update(time, delta) {
 
 
+  guardar.on('pointerdown', function () {
+
+    // CAPTUREM LA POSICIÓ ACTUAL DEL JUGADOR
+    let posicioX = Math.round(jugador.x/33);
+    let posicioY = Math.round(jugador.y/33); 
+    
+    let informacioJugador = new Jugador(nomJugador, temps, claus, posicioX, posicioY, clauSamuel, clauOlga, clauXavier, clauSergi, clauAlicia);
+    informacioJugador.guardarPartida(socket);
+  });
+  
   const velocitat = 180;
   const velocitatPrevia = jugador.body.velocity.clone();
 
