@@ -37,25 +37,47 @@ var respostaJugador = 0;
 var xocaAlumne = false;
 
 /**********SAMUEL***********/
-var xocaSamuel = clauSamuel = false;
+xocaSamuel = clauSamuel = false;
 
 /**********OLGA***********/
-var xocaOlga = clauOlga = false;
+xocaOlga = clauOlga = false;
 
 /**********XAVIER***********/
-var xocaXavier = clauXavier = false;
+xocaXavier = clauXavier = false;
 
 /**********SERGI***********/
-var xocaSergi = clauSergi = false;
+xocaSergi = clauSergi = false;
 
 /**********ALICIA***********/
-var xocaAlicia = clauAlicia = false;
+xocaAlicia = clauAlicia = false;
 
-/*********CAFETERIA***********/
-var xocaCafeteria = false;
+/*********POSICIÓ JUGADOR***********/
+x = y = 0;
 
 
 
+var url = window.location.search;
+variable = url.split('=');
+
+// SI LO QUE PASSEM PER GET ÉS LA ID DE LA PARTIDA, RECUPERA-LA
+if (variable[0] == "?id"){
+
+  // CRIDEM LA FUNCIÓ PERQUÈ ENS BUSQUI LA PARTIDA
+  socket.emit('obrirPartidaGuardada', variable[1]);
+
+  // REBEM LA INFORMACIÓ DE LA PARTIDA
+  socket.on('partidaGuardada', function (partida) {
+
+    clauSamuel = partida[0]["ClauSamuel"];
+    clauOlga = partida[0]["ClauOlga"];
+    clauXavier = partida[0]["ClauXavier"];
+    clauSergi = partida[0]["ClauSergi"];
+    clauAlicia = partida[0]["ClauAlicia"];
+
+    x = partida[0]["X"] * 848.986 / 26;
+    y = partida[0]["Y"] * 236.467 / 7;
+  });
+}
 
 
 function preload() {
@@ -97,10 +119,17 @@ function create() {
   // 5 - LOCALITZEM EL LLOC ON FARÀ SPAWN EL JUGADOR
   const llocSpawn = map.findObject("Lloc Spawn", obj => obj.name === "Lloc Spawn");
 
+  
+  // SI LO QUE PASSEM PER GET NO ÉS LA ID DE LA PARTIDA, CREEM LES POSICIONS X I Y
+  if (variable[0] != "?id"){
 
+    x = llocSpawn.x;
+    y = llocSpawn.y;
+  }
+  
   // 6 - LI AFEGIM FÍSICA AL JUGADOR (LLOC ON APAREIXARÀ-X, LLOC ON APAREIXARÀ-Y, "", "")
-  jugador = this.physics.add.sprite(llocSpawn.x, llocSpawn.y, "ninoJugador", "jugador-esquerra.png").setSize(30, 30).setOffset(0, 10);
-
+  jugador = this.physics.add.sprite(x, y, "ninoJugador", "jugador-esquerra.png").setSize(30, 30).setOffset(0, 10);
+  
   this.physics.add.collider(jugador, arbres);
   this.physics.add.collider(jugador, superficies);
   this.physics.add.collider(jugador, persones, function(){ xocaAlumne = true;});

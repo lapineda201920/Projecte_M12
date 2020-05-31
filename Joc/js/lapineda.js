@@ -6,7 +6,7 @@
     var url = window.location.search;
     variable = url.split('=');
 
-    // SI LO QUE PASSEM PER POST ÉS LA ID DE LA PARTIDA, RECUPERA-LA
+    // SI LO QUE PASSEM PER GET ÉS LA ID DE LA PARTIDA, RECUPERA-LA
     if (variable[0] == "?id"){
 
         // CRIDEM LA FUNCIÓ PERQUÈ ENS BUSQUI LA PARTIDA
