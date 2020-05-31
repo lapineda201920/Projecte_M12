@@ -24,6 +24,7 @@ var server = http.createServer(function(req, res) {
 var io = require('socket.io').listen(server);
 
 // VARIABLES MONGODB
+var mongo = require('mongodb');
 var MongoClient = require('mongodb').MongoClient;
 var urlMongo = "mongodb://127.0.0.1:27017";
 
@@ -60,6 +61,22 @@ io.sockets.on('connection', function (socket) {
       dbo.collection("jugadors").find({}).toArray(function(err, result) {
         if (err) throw err;
         socket.emit('partidesGuardades', result);
+        db.close();
+      });
+    });
+  });
+
+  // PER A VEURE LA INFORMACIÓ D'UNA PARTIDA EN CONCRET
+  socket.on('obrirPartidaGuardada', idPartida => {
+
+    MongoClient.connect(urlMongo, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("laPinedaAdventure");
+      
+      var o_id = mongo.ObjectID(idPartida);
+      dbo.collection("jugadors").find({"_id": o_id}).toArray(function(err, result) {
+        if (err) throw err;
+        socket.emit('partidaGuardada', result);
         db.close();
       });
     });

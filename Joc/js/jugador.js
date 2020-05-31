@@ -31,7 +31,7 @@ class Jugador {
       ClauOlga: this.clauOlga,
       ClauXavier: this.clauXavier,
       ClauSergi: this.clauSergi,
-      ClauAlici: this.clauAlicia 
+      ClauAlicia: this.clauAlicia 
     };
 
     // LA GUARDEM A MONGODB

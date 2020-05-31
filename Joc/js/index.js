@@ -29,6 +29,17 @@ function agafarNom(){
     window.location.replace('lapineda.html?nom='+nom);
 }
 
+function recuperarPartida(idPartida){
+
+    // CRIDEM LA FUNCIÓ PERQUÈ ENS BUSQUI LA PARTIDA
+    socket.emit('obrirPartidaGuardada', idPartida);
+
+    // REBEM LA INFORMACIÓ DE LA PARTIDA
+    socket.on('partidaGuardada', function (partida) {
+
+        window.location.replace('lapineda.html?id='+partida[0]["_id"]);
+    });
+}
 
 function obrirPartida(){
 
@@ -59,7 +70,7 @@ function obrirPartida(){
     
             
             // HO GUARDEM DINS LA VARIABLE
-            registrePartida +=  "<tr>" +
+            registrePartida +=  "<tr onclick='recuperarPartida(this.id)' id='" + partides[i]["_id"] + "'>" +
                                     "<td>" + partides[i]["Nom"] + "</td>" +
                                     "<td>" + minuts+":"+extra+segons + "</td>" +
                                     "<td>" + partides[i]["Claus"] + "</td>" +

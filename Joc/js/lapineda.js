@@ -3,9 +3,31 @@
 //---CONTENIDOR INFORMACIÓ DEL JOC---//
 
 // --> Variables
-    nomJugador = "";
-    claus = -1;
-    temps = 301; // 301= 5:01 minuts
+    var url = window.location.search;
+    variable = url.split('=');
+
+    // SI LO QUE PASSEM PER POST ÉS LA ID DE LA PARTIDA, RECUPERA-LA
+    if (variable[0] == "?id"){
+
+        // CRIDEM LA FUNCIÓ PERQUÈ ENS BUSQUI LA PARTIDA
+        socket.emit('obrirPartidaGuardada', variable[1]);
+
+        // REBEM LA INFORMACIÓ DE LA PARTIDA
+        socket.on('partidaGuardada', function (partida) {
+
+            nomJugador = partida[0]["Nom"];
+            claus = partida[0]["Claus"] - 1;
+            temps = partida[0]["Temps"] + 1;
+        });
+    }
+    // SINÒ, CREA UNA DE NOVA
+    else{
+
+        nomJugador = "";
+        claus = -1;
+        temps = 301; // 301= 5:01 minuts
+    }
+    
 
 // --> Funcions
 
@@ -89,13 +111,14 @@
 
     function nom(){
 
-        var url = window.location.search;
-        //console.log(url);
+        if (variable[0] != "?id"){
 
-        nomJugador = url.split('=');
-        nomJugador = nomJugador[1];
-        nomJugador = decodeURI(nomJugador);
-        //console.log(nomJugador);
+            var url = window.location.search;
+
+            nomJugador = url.split('=');
+            nomJugador = nomJugador[1];
+            nomJugador = decodeURI(nomJugador);
+        }
         
         document.getElementById("nomJugador").innerHTML = "<u>Nom Jugador</u><br>"+nomJugador; 
     }
