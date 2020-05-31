@@ -224,3 +224,19 @@ Dissabte 30 de Maig
 
 4) Quins problemes puc tenir?
 - Ho desconec.
+
+_____________________________
+Diumenge 31 de Maig
+
+
+1) Que vas fer?
+- Vaig estar aplicant el servidor al joc, per a que es poguin guardar les partides.
+
+2) Quins problemes vas tenir?
+- Els que vaig tenir els vaig poder solucionar.
+
+3) Que faré avui?
+- Avui tinc pensat fer que es pogui reanudar una partida amb tota la informació (nom, posició, claus, etc), o com a mínim fer que es mostrin el nom, les hores i les claus obtingudes de la partida reanudada.
+
+4) Quins problemes puc tenir?
+- Ho desconec.
