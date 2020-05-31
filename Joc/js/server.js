@@ -31,6 +31,8 @@ var urlMongo = "mongodb://127.0.0.1:27017";
 io.sockets.on('connection', function (socket) {
 
   console.log('--> Socket.io connectat!');
+
+  // PER A GUARDAR LES PARTIDES
   socket.on('guardarPartidaAMongoDB', myobj => {
 
     MongoClient.connect(urlMongo, function(err, db) {
@@ -41,6 +43,23 @@ io.sockets.on('connection', function (socket) {
       dbo.collection("jugadors").insertOne(myobj, function(err, res) {
         if (err) throw err;
         console.log("--> Partida Guardada!");
+        db.close();
+      });
+    });
+  });
+
+  // PER A VEURE LES PARTIDES GUARDADES
+  socket.on('obrirPartidesGuardades', res => {
+
+    console.log(res);
+
+    MongoClient.connect(urlMongo, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("laPinedaAdventure");
+      
+      dbo.collection("jugadors").find({}).toArray(function(err, result) {
+        if (err) throw err;
+        socket.emit('partidesGuardades', result);
         db.close();
       });
     });

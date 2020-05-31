@@ -21,6 +21,10 @@
 			<link href="//db.onlinewebfonts.com/c/e44df502907461539c98df084a0fda77?family=AdvoCut" rel="stylesheet" type="text/css"/>
 
 		<!----------JS---------->
+			<script src="/socket.io/socket.io.js"></script>
+			<script>
+				var socket = io.connect('http://localhost:8080');
+			</script>
 			<script src="js/index.js"></script>
 	</head>
 	<body>
@@ -100,24 +104,7 @@
 			   </h1>
 
 				<table>
-					<tr>
-						<th>NOM</th>
-						<th>MINUTS RESTANTS</th>
-						<th>CLAUS</th>
-						<th>DATA</th>
-					</tr>
-					<tr onclick="window.location.replace('lapineda.html')">
-						<td>Pere</td>
-						<td>4:30</td>
-						<td>2</td>
-						<td>01/05/2020</td>
-					</tr>
-					<tr onclick="window.location.replace('lapineda.html')">
-						<td>Maria</td>
-						<td>2:15</td>
-						<td>3</td>
-						<td>05/05/2020</td>
-					</tr>
+					
 				</table>
 
 				<button type="button" class="enrera" onclick="mostra('menuPrincipal', 'obrirPartida')">&#8630 Enrera</button>
