@@ -25,7 +25,7 @@
 
         nomJugador = "";
         claus = -1;
-        temps = 301; // 301= 5:01 minuts
+        temps = 5; // 301= 5:01 minuts
     }
     
 
@@ -64,6 +64,12 @@
             // PAREM EL TEMPS
             clearInterval(intervalTemps);
 
+            // ESBORREM LA PARTIDA DE LA BD (SI ÉS QUE ESTAVA GUARDADA)
+            if (variable[0] == "?id"){
+
+                socket.emit('eliminarPartidaGuardada', variable[1]);
+            }
+
             // PAREM EL JOC, PER LO QUE EL JUGADOR NO ES PODRÀ MOURE
             game.destroy();
 
@@ -97,8 +103,14 @@
             resposta.style.margin = "0px 0px 0px 200px";
             document.body.appendChild(resposta);
             
+            // ESBORREM LA PARTIDA DE LA BD (SI ÉS QUE ESTAVA GUARDADA)
+            if (variable[0] == "?id"){
+
+                socket.emit('eliminarPartidaGuardada', variable[1]);
+            }
+
             // PAREM EL JOC, PER LO QUE EL JUGADOR NO ES PODRÀ MOURE
-            game.destroy()
+            game.destroy();
 
             // I AL CAP DE 5 SEGONS, CANVIEM LA PÀGINA PER LA D'INICI
             setTimeout(function(){

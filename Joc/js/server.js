@@ -100,6 +100,22 @@ io.sockets.on('connection', function (socket) {
       });
     });
   });
+
+  // PER A ESBORRAR LA PARTIDA, JA SIGUI PERU S'HAGI GUANYAT O PERDUT
+  socket.on('eliminarPartidaGuardada', idPartida => {
+
+    MongoClient.connect(urlMongo, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("laPinedaAdventure");
+      
+      var o_id = mongo.ObjectID(idPartida);
+      dbo.collection("jugadors").deleteOne({"_id": o_id}, function(err, result) {
+        if (err) throw err;
+        console.log("--> Partida Borrada!");
+        db.close();
+      });
+    });
+  });
 });
 
 
