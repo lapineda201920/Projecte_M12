@@ -41,6 +41,18 @@ function recuperarPartida(idPartida){
     });
 }
 
+function eliminarPartida(idPartida){
+
+    // CRIDEM LA FUNCIÓ PERQUÈ ENS ELIMINI LA PARTIDA
+    socket.emit('eliminarPartidaGuardada', idPartida);
+
+    // BORREM TOTES LES PARTIDES DEL HTML
+    tancarPartida();
+
+    // IMPRIMIM TOTES LES PARTIDES QUE ESTAN A LA BD AL HTML
+    obrirPartida();
+}
+
 function obrirPartida(){
 
     // CRIDEM LA FUNCIÓ PERQUÈ ENS BUSQUI LES PARTIDES
@@ -53,6 +65,7 @@ function obrirPartida(){
                                     "<th>NOM</th>" +
                                     "<th>MINUTS RESTANTS</th>" +
                                     "<th>CLAUS</th>" +
+                                    "<th>ESBORRAR</th>" +
                                "</tr>";
                                
         for (var i = 0; i < partides.length; i++){
@@ -70,10 +83,11 @@ function obrirPartida(){
     
             
             // HO GUARDEM DINS LA VARIABLE
-            registrePartida +=  "<tr onclick='recuperarPartida(this.id)' id='" + partides[i]["_id"] + "'>" +
-                                    "<td>" + partides[i]["Nom"] + "</td>" +
-                                    "<td>" + minuts+":"+extra+segons + "</td>" +
-                                    "<td>" + partides[i]["Claus"] + "</td>" +
+            registrePartida +=  "<tr>" +
+                                    "<td onclick='recuperarPartida(this.id)' id='" + partides[i]["_id"] + "'>" + partides[i]["Nom"] + "</td>" +
+                                    "<td onclick='recuperarPartida(this.id)' id='" + partides[i]["_id"] + "'>" + minuts+":"+extra+segons + "</td>" +
+                                    "<td onclick='recuperarPartida(this.id)' id='" + partides[i]["_id"] + "'>" + partides[i]["Claus"] + "</td>" +
+                                    "<td><button type='button' onclick='eliminarPartida(`" + partides[i]["_id"] + "`)'>Eliminar Partida!</button></td>" +
                                 "</tr>";
         }
 
