@@ -238,7 +238,7 @@ function update(time, delta) {
     let posicioY = Math.round(jugador.y/33); 
     
     let informacioJugador = new Jugador(nomJugador, temps, claus, posicioX, posicioY, clauSamuel, clauOlga, clauXavier, clauSergi, clauAlicia);
-    informacioJugador.guardarPartida(socket);
+    informacioJugador.guardarPartida(variable);
   });
   
   const velocitat = 180;

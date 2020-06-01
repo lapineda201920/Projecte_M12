@@ -31,7 +31,7 @@ var urlMongo = "mongodb://127.0.0.1:27017";
 // SOCKET.IO
 io.sockets.on('connection', function (socket) {
 
-  console.log('--> Socket.io connectat!');
+  console.log('----- SOCKET.IO CONNECTAT -----');
 
   // PER A GUARDAR LES PARTIDES
   socket.on('guardarPartidaAMongoDB', myobj => {
@@ -77,6 +77,25 @@ io.sockets.on('connection', function (socket) {
       dbo.collection("jugadors").find({"_id": o_id}).toArray(function(err, result) {
         if (err) throw err;
         socket.emit('partidaGuardada', result);
+        db.close();
+      });
+    });
+  });
+
+  // PER ACTUALITZAR UNA PARTIDA EN CONCRET
+  socket.on('actualitzarPartidaAMongoDB', ({id, obj}) => {
+
+    MongoClient.connect(urlMongo, function(err, db) {
+
+      if (err) throw err;
+      var dbo = db.db("laPinedaAdventure");
+      
+      var o_id = mongo.ObjectID(id);
+      var set = {"$set" : obj};
+
+      dbo.collection("jugadors").updateOne({ "_id": o_id }, set, function(err, res) {
+        if (err) throw err;
+        console.log("--> Partida Actualitzada!");
         db.close();
       });
     });

@@ -16,7 +16,7 @@ class Jugador {
   }
 
 
-  guardarPartida(socket) {
+  guardarPartida(variable) {
 
     alert("Partida guardada!");
 
@@ -36,7 +36,17 @@ class Jugador {
 
     // LA GUARDEM A MONGODB
     
-    socket.emit('guardarPartidaAMongoDB', myobj);
+    // --> SI LO QUE PASSEM PER GET ÉS LA ID DE LA PARTIDA, FEM UN UPDATE DE LA PARTIDA
+    if (variable[0] == "?id"){
+
+      socket.emit('actualitzarPartidaAMongoDB', {obj:myobj, id:variable[1]});
+    }
+    // --> SINÒ, CREA UNA PARTTIDA NOVA
+    else{
+
+      socket.emit('guardarPartidaAMongoDB', myobj);
+    }
+    
 
     
     
@@ -44,11 +54,5 @@ class Jugador {
     game.destroy();
 
     location.href = "http://localhost:8080/index.html";
-
-    /*console.log("Nom: " + this.nom + "\nTemps: " + this.temps + 
-                "\nClau: " + this.claus + "\nX: " +  this.posicioX + 
-                "\nY: " + this.posicioY + "\nCSamuel: " + this.clauSamuel + 
-                "\nCOlga: " + this.clauOlga + "\nCXavier: " + this.clauXavier + 
-                "\nCSergi: " + this.clauSergi + "\nCAlicia: " + this.clauAlicia);*/
   }
 }
