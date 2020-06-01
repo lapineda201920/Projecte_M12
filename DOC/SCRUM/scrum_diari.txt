@@ -240,3 +240,19 @@ Diumenge 31 de Maig
 
 4) Quins problemes puc tenir?
 - Ho desconec.
+
+_____________________________
+Diulluns 1 de Juny
+
+
+1) Que vas fer?
+- Vaig estar fent que es pogués reanudar una partida amb tota la informació (nom, posició, claus, etc).
+
+2) Quins problemes vas tenir?
+- Els que vaig tenir els vaig poder solucionar.
+
+3) Que faré avui?
+- Avui tinc pensat fer que es pogui guardar una partida guradada, que en poques paraules sería fer un update d'una partida ja existent. Si tinc temps, voldría fer que al acabar una partida ja sigui per temps o perquè s'ha completat l'objectiu, s'esborri la partida de la BD.
+
+4) Quins problemes puc tenir?
+- Ho desconec.
