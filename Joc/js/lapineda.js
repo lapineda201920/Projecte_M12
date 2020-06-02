@@ -25,7 +25,7 @@
 
         nomJugador = "";
         claus = -1;
-        temps = 5; // 301= 5:01 minuts
+        temps = 301; // 301= 5:01 minuts
     }
     
 

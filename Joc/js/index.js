@@ -43,14 +43,24 @@ function recuperarPartida(idPartida){
 
 function eliminarPartida(idPartida){
 
-    // CRIDEM LA FUNCIÓ PERQUÈ ENS ELIMINI LA PARTIDA
-    socket.emit('eliminarPartidaGuardada', idPartida);
+    var confirmacio = confirm("Segur que vols eliminar la partida?");
 
-    // BORREM TOTES LES PARTIDES DEL HTML
-    tancarPartida();
+    if (confirmacio){
 
-    // IMPRIMIM TOTES LES PARTIDES QUE ESTAN A LA BD AL HTML
-    obrirPartida();
+        // CRIDEM LA FUNCIÓ PERQUÈ ENS ELIMINI LA PARTIDA
+        socket.emit('eliminarPartidaGuardada', idPartida);
+
+        // BORREM TOTES LES PARTIDES DEL HTML
+        tancarPartida();
+
+        // IMPRIMIM TOTES LES PARTIDES QUE ESTAN A LA BD AL HTML
+        obrirPartida();
+    }
+    else{
+
+        alert("Partida no eliminada!")
+    }
+    
 }
 
 function obrirPartida(){
