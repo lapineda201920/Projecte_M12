@@ -101,7 +101,7 @@ io.sockets.on('connection', function (socket) {
     });
   });
 
-  // PER A ESBORRAR LA PARTIDA, JA SIGUI PERU S'HAGI GUANYAT O PERDUT
+  // PER A ESBORRAR LA PARTIDA, JA SIGUI PERQUÈ S'HAGI GUANYAT O PERDUT
   socket.on('eliminarPartidaGuardada', idPartida => {
 
     MongoClient.connect(urlMongo, function(err, db) {

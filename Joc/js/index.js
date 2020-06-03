@@ -31,14 +31,7 @@ function agafarNom(){
 
 function recuperarPartida(idPartida){
 
-    // CRIDEM LA FUNCIÓ PERQUÈ ENS BUSQUI LA PARTIDA
-    socket.emit('obrirPartidaGuardada', idPartida);
-
-    // REBEM LA INFORMACIÓ DE LA PARTIDA
-    socket.on('partidaGuardada', function (partida) {
-
-        window.location.replace('lapineda.html?id='+partida[0]["_id"]);
-    });
+    window.location.replace('lapineda.html?id='+idPartida);
 }
 
 function eliminarPartida(idPartida){

@@ -125,11 +125,7 @@
 
         if (variable[0] != "?id"){
 
-            var url = window.location.search;
-
-            nomJugador = url.split('=');
-            nomJugador = nomJugador[1];
-            nomJugador = decodeURI(nomJugador);
+            nomJugador = decodeURI(variable[1]);
         }
         
         document.getElementById("nomJugador").innerHTML = "<u>Nom Jugador</u><br>"+nomJugador; 
