@@ -32,3 +32,4 @@
 
 I ja està!
 
+## Recorda: Si al executar el joc, no mostra el mapa (tot negre), pot ser per la versió del Firefox que utilitzis. Obre una pestanya en Firefox, escriu: about:config. Prem el botó d'acceptar (color blau), i un cop dins escriu en el terminal: webgl. Per acabar, canvía els valors a 'true' de webgl.disabled i webgl.force-enabled.
