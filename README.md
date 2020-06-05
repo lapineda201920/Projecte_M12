@@ -24,7 +24,7 @@
 4. Accediu a la carpeta ‘Joc’ i obrim un terminal, el qual executarem la següent comanda:
 - npm run devStart
 
-## Recorda: Perquè funcioni el projecte s'ha d'executar el punt 4 --> npm run devStar
+## Recorda: Perquè funcioni el projecte s'ha d'executar el punt 4 --> npm run devStart
 
 5. Anem al buscador d'internet, i introduïm:
 	- localhost:8080/index.html
