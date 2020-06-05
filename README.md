@@ -22,7 +22,7 @@
 - A continuació podem tancar el terminal.
 
 4. Accediu a la carpeta ‘Joc’ i obrim un terminal, el qual executarem la següent comanda:
-- npm run devStar
+- npm run devStart
 
 ## Recorda: Perquè funcioni el projecte s'ha d'executar el punt 4 --> npm run devStar
 
